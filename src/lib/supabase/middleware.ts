@@ -18,7 +18,14 @@ export async function updateSession(request: NextRequest) {
   const url = process.env.NEXT_PUBLIC_SUPABASE_URL;
   const anonKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY;
   if (!url || !anonKey) {
-    // Env not configured yet — let pages render their own guidance.
+    // Env not configured yet — keep users on the public pages, where the
+    // sign-in button surfaces a clear "env missing" message on click.
+    if (!isPublicPath(request.nextUrl.pathname)) {
+      const redirect = request.nextUrl.clone();
+      redirect.pathname = "/login";
+      redirect.search = "";
+      return NextResponse.redirect(redirect);
+    }
     return response;
   }
 
