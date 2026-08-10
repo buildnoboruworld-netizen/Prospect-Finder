@@ -54,8 +54,10 @@ npm run lint
    - Delete the downloaded JSON key file after encoding.
 
 5. **Team allowlist** — the admin (seeded: build.noboruworld@gmail.com) signs
-   in, then adds teammates at **/admin/users**. Industry assignments are
-   seeded via SQL for now (template at the bottom of migration 0004).
+   in, then adds teammates at **/admin/users** — or run
+   `scripts/seed-teammates.sql` (fill in Neha/Sharmila/Aryan's real Google
+   emails first) to create their allowlist rows AND their industry
+   assignments from the allotment sheet in one go.
 
 ## How it works (Phase 1)
 

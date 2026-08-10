@@ -44,6 +44,16 @@ Names (see `.env.example`): `NEXT_PUBLIC_SUPABASE_URL`,
 Phase 2+: `ANTHROPIC_API_KEY`, `ENRICHMENT_PROVIDER`, `LUSHA_API_KEY`,
 `APOLLO_API_KEY`.
 
+## Brand
+
+Colors: black · lime green `#8CD056` ≈ `oklch(0.77 0.17 131)` · white — all
+shadcn tokens in `src/app/globals.css` (primary = lime with near-black text;
+white-on-lime fails contrast, don't do it). Fonts: Poppins (headings, via
+`--font-heading`/h1-h6 base rule) + Space Grotesk (body). Logo: inline
+2-polygon mark in `src/components/logo.tsx` (dark triangle = currentColor);
+original traced asset kept at `public/noboru-world-logo.svg`; favicon
+`src/app/icon.svg`.
+
 ## Database & migrations
 
 - Migrations are plain SQL in `supabase/migrations/` (timestamp-prefixed).
@@ -55,6 +65,11 @@ Phase 2+: `ANTHROPIC_API_KEY`, `ENRICHMENT_PROVIDER`, `LUSHA_API_KEY`,
 - RLS model: allowlisted active users read everything; members write only
   rows they own; admins write all; service role (server) bypasses RLS.
 - The `users` table IS the login allowlist (row must exist + active=true).
+- 26 industries seeded from the 11 Aug 2026 allotment sheet (codes PF…CE;
+  Clothing/Personal Care sub-industries flattened into own rows). Pragaman's
+  7 assignments seed in migration 0004; Neha/Sharmila/Aryan via
+  `scripts/seed-teammates.sql` once their Google emails exist (replace the
+  REPLACE_ME placeholders, run in SQL editor).
 - Dedup (PRD §7): generated normalized columns + unique indexes on
   `domain_normalized` / `instagram_handle_normalized`; fuzzy name+city via
   pg_trgm `check_company_duplicate` RPC at ≥0.85 — flags for human confirm,

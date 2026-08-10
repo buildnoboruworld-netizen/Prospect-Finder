@@ -59,6 +59,7 @@ export interface Industry {
   id: string;
   name: string;
   slug: string;
+  code: string | null; // team shorthand from the allotment sheet (PF, ML, HS…)
   icp_config: IcpConfig;
   created_at: string;
 }

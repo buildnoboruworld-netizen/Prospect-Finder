@@ -11,6 +11,14 @@ import {
   CardTitle,
 } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
+import {
+  Table,
+  TableBody,
+  TableCell,
+  TableHead,
+  TableHeader,
+  TableRow,
+} from "@/components/ui/table";
 import type { Assignment, Company, Industry } from "@/lib/types";
 
 type AssignmentRow = Assignment & {
@@ -42,15 +50,13 @@ export default async function HomePage() {
   >[];
 
   const isAdmin = user.role === "admin";
-  const myAssignments = assignments.filter((a) => a.user_id === user.id);
-  const visibleIndustries = isAdmin
-    ? industries
-    : industries.filter((i) => myAssignments.some((a) => a.industry_id === i.id));
+  const myIndustries = industries.filter((i) =>
+    assignments.some((a) => a.industry_id === i.id && a.user_id === user.id)
+  );
 
-  const countsFor = (industryId: string) => {
+  const countsFor = (industryId: string, mineOnly: boolean) => {
     const rows = companies.filter(
-      (c) =>
-        c.industry_id === industryId && (isAdmin || c.owner_id === user.id)
+      (c) => c.industry_id === industryId && (!mineOnly || c.owner_id === user.id)
     );
     return {
       total: rows.length,
@@ -62,16 +68,12 @@ export default async function HomePage() {
   };
 
   return (
-    <div className="space-y-6">
+    <div className="space-y-8">
       <div className="flex items-end justify-between">
         <div>
-          <h1 className="text-2xl font-semibold">
-            {isAdmin ? "All industries" : "My industries"}
-          </h1>
+          <h1 className="text-2xl font-semibold">My industries</h1>
           <p className="text-sm text-muted-foreground">
-            {isAdmin
-              ? "Team-wide pipeline counts per industry."
-              : "Your allotted industries and pipeline counts."}
+            Your allotted industries and pipeline counts.
           </p>
         </div>
         <Button asChild>
@@ -79,7 +81,7 @@ export default async function HomePage() {
         </Button>
       </div>
 
-      {visibleIndustries.length === 0 ? (
+      {myIndustries.length === 0 ? (
         <Card>
           <CardHeader>
             <CardTitle>No industries assigned yet</CardTitle>
@@ -91,37 +93,32 @@ export default async function HomePage() {
         </Card>
       ) : (
         <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-          {visibleIndustries.map((industry) => {
-            const counts = countsFor(industry.id);
-            const assignees = assignments.filter(
-              (a) => a.industry_id === industry.id
-            );
+          {myIndustries.map((industry) => {
+            const counts = countsFor(industry.id, true);
             return (
               <Card key={industry.id} className="flex flex-col">
                 <CardHeader>
-                  <CardTitle className="text-lg">{industry.name}</CardTitle>
+                  <CardTitle className="flex items-center gap-2 text-lg">
+                    {industry.name}
+                    {industry.code && (
+                      <Badge variant="outline" className="font-mono text-[10px]">
+                        {industry.code}
+                      </Badge>
+                    )}
+                  </CardTitle>
                   <CardDescription>
                     {counts.total === 0
                       ? "No leads yet"
-                      : `${counts.total} ${isAdmin ? "team" : "of your"} lead${counts.total === 1 ? "" : "s"}`}
+                      : `${counts.total} of your lead${counts.total === 1 ? "" : "s"}`}
                   </CardDescription>
                 </CardHeader>
-                <CardContent className="flex-1 space-y-3">
+                <CardContent className="flex-1">
                   <div className="flex flex-wrap gap-2 text-xs">
                     <Badge variant="secondary">draft {counts.draft}</Badge>
                     <Badge variant="secondary">approved {counts.approved}</Badge>
                     <Badge variant="secondary">synced {counts.synced}</Badge>
                     <Badge variant="secondary">rejected {counts.rejected}</Badge>
                   </div>
-                  {isAdmin && (
-                    <p className="text-xs text-muted-foreground">
-                      {assignees.length > 0
-                        ? `Assigned: ${assignees
-                            .map((a) => a.user?.name ?? a.user?.email ?? "?")
-                            .join(", ")}`
-                        : "Unassigned"}
-                    </p>
-                  )}
                 </CardContent>
                 <CardFooter className="gap-2">
                   <Button
@@ -147,6 +144,71 @@ export default async function HomePage() {
             );
           })}
         </div>
+      )}
+
+      {isAdmin && (
+        <section className="space-y-3">
+          <div>
+            <h2 className="text-lg font-semibold">All industries</h2>
+            <p className="text-sm text-muted-foreground">
+              Team-wide allotment and pipeline counts across all{" "}
+              {industries.length} industries.
+            </p>
+          </div>
+          <div className="rounded-md border">
+            <Table>
+              <TableHeader>
+                <TableRow>
+                  <TableHead className="w-16">Code</TableHead>
+                  <TableHead>Industry</TableHead>
+                  <TableHead>Assigned to</TableHead>
+                  <TableHead className="text-right">Leads</TableHead>
+                  <TableHead className="text-right">Approved+</TableHead>
+                </TableRow>
+              </TableHeader>
+              <TableBody>
+                {industries.map((industry) => {
+                  const counts = countsFor(industry.id, false);
+                  const assignees = assignments.filter(
+                    (a) => a.industry_id === industry.id
+                  );
+                  return (
+                    <TableRow key={industry.id}>
+                      <TableCell className="font-mono text-xs">
+                        {industry.code ?? "—"}
+                      </TableCell>
+                      <TableCell>
+                        <Link
+                          href={`/pipeline?industry=${industry.id}&scope=all`}
+                          className="font-medium hover:underline"
+                        >
+                          {industry.name}
+                        </Link>
+                      </TableCell>
+                      <TableCell>
+                        {assignees.length > 0 ? (
+                          <span className="text-sm">
+                            {assignees
+                              .map((a) => a.user?.name ?? a.user?.email ?? "?")
+                              .join(", ")}
+                          </span>
+                        ) : (
+                          <span className="text-xs text-muted-foreground">
+                            unassigned
+                          </span>
+                        )}
+                      </TableCell>
+                      <TableCell className="text-right">{counts.total}</TableCell>
+                      <TableCell className="text-right">
+                        {counts.approved + counts.synced}
+                      </TableCell>
+                    </TableRow>
+                  );
+                })}
+              </TableBody>
+            </Table>
+          </div>
+        </section>
       )}
     </div>
   );

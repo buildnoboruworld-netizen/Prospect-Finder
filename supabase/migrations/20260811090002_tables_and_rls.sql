@@ -22,6 +22,7 @@ create table public.industries (
   id          uuid primary key default gen_random_uuid(),
   name        text not null unique,
   slug        text not null unique,
+  code        text unique,        -- team shorthand from the allotment sheet (PF, ML, HS…)
   -- { revenue_band, follower_band, ticket_context, seed_queries[], exclusions[], notes }
   icp_config  jsonb not null default '{}'::jsonb,
   created_at  timestamptz not null default now()
