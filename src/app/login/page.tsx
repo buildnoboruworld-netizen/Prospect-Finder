@@ -6,6 +6,7 @@ import {
   CardTitle,
 } from "@/components/ui/card";
 import { Alert, AlertDescription } from "@/components/ui/alert";
+import { LogoMark } from "@/components/logo";
 import { GoogleSignInButton } from "./google-button";
 
 const ERROR_MESSAGES: Record<string, string> = {
@@ -23,8 +24,11 @@ export default async function LoginPage({
   return (
     <main className="flex min-h-svh items-center justify-center bg-muted/40 p-4">
       <Card className="w-full max-w-sm">
-        <CardHeader className="text-center">
-          <CardTitle className="text-2xl">Noboru Prospector</CardTitle>
+        <CardHeader className="items-center text-center">
+          <LogoMark className="mx-auto mb-2 size-14 text-neutral-950" />
+          <CardTitle className="font-heading text-2xl">
+            Noboru Prospector
+          </CardTitle>
           <CardDescription>
             Internal lead-gen for Noboru World. Sign in with your team Google
             account.
