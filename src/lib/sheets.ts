@@ -1,7 +1,7 @@
 import "server-only";
 import { google, type sheets_v4 } from "googleapis";
 import { createAdminClient } from "@/lib/supabase/admin";
-import type { Company, Contact, Industry } from "@/lib/types";
+import type { Company, Contact } from "@/lib/types";
 
 // ─────────────────────────────────────────────────────────────────────────────
 // One-way Google Sheets sync: DB → Sheet (PRD §9). The Sheet is a mirror,
@@ -9,6 +9,10 @@ import type { Company, Contact, Industry } from "@/lib/types";
 // Tabs: one per industry + "Master". Six core columns first, in this exact
 // order, then the detail columns. One row per contact, company fields
 // repeated, primary contact flagged in the last column.
+//
+// All writes are batched (one spreadsheets.get + one addSheet batch + one
+// values.batchClear + one values.batchUpdate) so a full 26-industry sync
+// stays far below the Sheets API's per-minute request quota.
 // ─────────────────────────────────────────────────────────────────────────────
 
 export const SHEET_COLUMNS = [
@@ -130,60 +134,64 @@ function companyRows(c: CompanyWithJoins): string[][] {
   return contacts.length === 0 ? [toRow(null)] : contacts.map(toRow);
 }
 
-async function fetchSyncableCompanies(
-  industryId?: string
-): Promise<CompanyWithJoins[]> {
+async function fetchSyncableCompanies(): Promise<CompanyWithJoins[]> {
   const admin = createAdminClient();
-  let query = admin
+  const { data, error } = await admin
     .from("companies")
     .select(
       "*, contacts(*), owner:users(name, email), industry:industries(name)"
     )
     .in("status", [...SYNCABLE_STATUSES])
     .order("name");
-  if (industryId) query = query.eq("industry_id", industryId);
-
-  const { data, error } = await query;
   if (error) throw new Error(`Failed to load companies: ${error.message}`);
   return (data ?? []) as unknown as CompanyWithJoins[];
 }
 
-async function ensureTab(
-  api: sheets_v4.Sheets,
-  spreadsheetId: string,
-  title: string
-): Promise<void> {
+// Rewrites every given tab in 4 API calls total, regardless of tab count.
+async function writeTabs(tabs: Map<string, string[][]>): Promise<void> {
+  const { api, spreadsheetId } = getSheetsClient();
+
   const meta = await api.spreadsheets.get({ spreadsheetId });
-  const exists = meta.data.sheets?.some(
-    (s) => s.properties?.title === title
+  const existing = new Set(
+    (meta.data.sheets ?? [])
+      .map((s) => s.properties?.title)
+      .filter((t): t is string => Boolean(t))
   );
-  if (!exists) {
+  const missing = [...tabs.keys()].filter((t) => !existing.has(t));
+  if (missing.length > 0) {
     await api.spreadsheets.batchUpdate({
       spreadsheetId,
       requestBody: {
-        requests: [{ addSheet: { properties: { title } } }],
+        requests: missing.map((title) => ({ addSheet: { properties: { title } } })),
       },
     });
   }
+
+  await api.spreadsheets.values.batchClear({
+    spreadsheetId,
+    requestBody: { ranges: [...tabs.keys()].map((t) => `'${t}'!A:Z`) },
+  });
+
+  await api.spreadsheets.values.batchUpdate({
+    spreadsheetId,
+    requestBody: {
+      valueInputOption: "RAW",
+      data: [...tabs.entries()].map(([title, rows]) => ({
+        range: `'${title}'!A1`,
+        values: [[...SHEET_COLUMNS], ...rows],
+      })),
+    },
+  });
 }
 
-async function writeTab(
-  api: sheets_v4.Sheets,
-  spreadsheetId: string,
-  title: string,
-  rows: string[][]
-): Promise<void> {
-  await ensureTab(api, spreadsheetId, title);
-  await api.spreadsheets.values.clear({
-    spreadsheetId,
-    range: `'${title}'!A:Z`,
-  });
-  await api.spreadsheets.values.update({
-    spreadsheetId,
-    range: `'${title}'!A1`,
-    valueInputOption: "RAW",
-    requestBody: { values: [[...SHEET_COLUMNS], ...rows] },
-  });
+function masterRows(all: CompanyWithJoins[]): string[][] {
+  return [...all]
+    .sort(
+      (a, b) =>
+        (a.industry?.name ?? "").localeCompare(b.industry?.name ?? "") ||
+        a.name.localeCompare(b.name)
+    )
+    .flatMap(companyRows);
 }
 
 export interface SyncResult {
@@ -193,8 +201,7 @@ export interface SyncResult {
   error?: string;
 }
 
-// Rewrites one industry tab + the Master tab. Marks approved companies as
-// synced and logs to sheet_sync_log.
+// Rewrites one industry tab + the Master tab.
 export async function syncIndustry(industryId: string): Promise<SyncResult> {
   const admin = createAdminClient();
   const { data: industryRow, error: indErr } = await admin
@@ -205,24 +212,25 @@ export async function syncIndustry(industryId: string): Promise<SyncResult> {
   if (indErr || !industryRow) {
     return { ok: false, tabs: [], companiesSynced: 0, error: "Industry not found" };
   }
-  const industry = industryRow as Pick<Industry, "id" | "name">;
 
-  const companies = await fetchSyncableCompanies(industryId);
+  const all = await fetchSyncableCompanies();
+  const mine = all.filter((c) => c.industry_id === industryId);
 
   try {
-    const { api, spreadsheetId } = getSheetsClient();
-    const rows = companies.flatMap(companyRows);
-    await writeTab(api, spreadsheetId, industry.name, rows);
-    await rebuildMasterTab(api, spreadsheetId);
-    await recordSyncSuccess(companies);
+    const tabs = new Map<string, string[][]>([
+      [industryRow.name, mine.flatMap(companyRows)],
+      [MASTER_TAB, masterRows(all)],
+    ]);
+    await writeTabs(tabs);
+    await recordSyncSuccess(mine, all);
     return {
       ok: true,
-      tabs: [industry.name, MASTER_TAB],
-      companiesSynced: companies.length,
+      tabs: [industryRow.name, MASTER_TAB],
+      companiesSynced: mine.length,
     };
   } catch (e) {
     const message = e instanceof Error ? e.message : "Unknown sync error";
-    await recordSyncError(companies, message);
+    await recordSyncError(mine, message);
     return { ok: false, tabs: [], companiesSynced: 0, error: message };
   }
 }
@@ -239,66 +247,57 @@ export async function syncAllTabs(): Promise<SyncResult> {
   }
 
   const all = await fetchSyncableCompanies();
-  const tabs: string[] = [];
+  const tabs = new Map<string, string[][]>();
+  for (const industry of industriesData ?? []) {
+    const companies = all.filter((c) => c.industry_id === industry.id);
+    if (companies.length === 0) continue;
+    tabs.set(industry.name, companies.flatMap(companyRows));
+  }
+  tabs.set(MASTER_TAB, masterRows(all));
 
   try {
-    const { api, spreadsheetId } = getSheetsClient();
-    for (const industry of industriesData ?? []) {
-      const companies = all.filter((c) => c.industry_id === industry.id);
-      if (companies.length === 0) continue;
-      await writeTab(
-        api,
-        spreadsheetId,
-        industry.name,
-        companies.flatMap(companyRows)
-      );
-      tabs.push(industry.name);
-    }
-    await rebuildMasterTab(api, spreadsheetId, all);
-    tabs.push(MASTER_TAB);
-    await recordSyncSuccess(all);
-    return { ok: true, tabs, companiesSynced: all.length };
+    await writeTabs(tabs);
+    await recordSyncSuccess(all, all);
+    return { ok: true, tabs: [...tabs.keys()], companiesSynced: all.length };
   } catch (e) {
     const message = e instanceof Error ? e.message : "Unknown sync error";
     await recordSyncError(all, message);
-    return { ok: false, tabs, companiesSynced: 0, error: message };
+    return { ok: false, tabs: [], companiesSynced: 0, error: message };
   }
 }
 
-async function rebuildMasterTab(
-  api: sheets_v4.Sheets,
-  spreadsheetId: string,
-  preloaded?: CompanyWithJoins[]
+// Log a success row (with the tab row number) for companies whose industry
+// tab was rewritten, and flip approved → synced for every company now on the
+// sheet (Master always carries all of them).
+async function recordSyncSuccess(
+  tabCompanies: CompanyWithJoins[],
+  allWritten: CompanyWithJoins[]
 ): Promise<void> {
-  const all = preloaded ?? (await fetchSyncableCompanies());
-  const rows = all
-    .sort(
-      (a, b) =>
-        (a.industry?.name ?? "").localeCompare(b.industry?.name ?? "") ||
-        a.name.localeCompare(b.name)
-    )
-    .flatMap(companyRows);
-  await writeTab(api, spreadsheetId, MASTER_TAB, rows);
-}
-
-async function recordSyncSuccess(companies: CompanyWithJoins[]): Promise<void> {
-  if (companies.length === 0) return;
   const admin = createAdminClient();
-  const ids = companies.map((c) => c.id);
 
-  await admin.from("sheet_sync_log").insert(
-    companies.map((c, i) => ({
-      company_id: c.id,
-      sheet_row: i + 2, // 1-based + header row
-      status: "success" as const,
-    }))
-  );
-  // approved → synced (never touch enriched — that state survives re-syncs)
-  await admin
-    .from("companies")
-    .update({ status: "synced" })
-    .in("id", ids)
-    .eq("status", "approved");
+  if (tabCompanies.length > 0) {
+    let row = 2; // 1-based + header
+    const logs = tabCompanies.flatMap((c) => {
+      const entry = {
+        company_id: c.id,
+        sheet_row: row,
+        status: "success" as const,
+      };
+      row += Math.max(1, c.contacts?.length ?? 0);
+      return [entry];
+    });
+    await admin.from("sheet_sync_log").insert(logs);
+  }
+
+  const ids = allWritten.map((c) => c.id);
+  if (ids.length > 0) {
+    // approved → synced (never touch enriched — that state survives re-syncs)
+    await admin
+      .from("companies")
+      .update({ status: "synced" })
+      .in("id", ids)
+      .eq("status", "approved");
+  }
 }
 
 async function recordSyncError(
