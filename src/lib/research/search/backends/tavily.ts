@@ -24,6 +24,34 @@ const ENDPOINT = "https://api.tavily.com/search";
 // Free plan is ~1000 credits/month; a basic search costs 1 credit.
 const COST_PER_THOUSAND_USD = 0;
 
+/**
+ * Short-lived response cache, keyed by query.
+ *
+ * A stage that times out is retried, and the retry re-plans the same queries
+ * (the planner runs at temperature 0 for exactly this reason). Without a
+ * cache each retry re-ran every search — burning credits and, worse, eating
+ * the same seconds again so the retry had even LESS time to finish than the
+ * attempt that just failed. That death spiral is what turned one slow call
+ * into a dead run.
+ *
+ * In-process only: it is a within-run optimisation, not a durable store, and
+ * a cold serverless instance simply searches again.
+ */
+const CACHE_TTL_MS = 15 * 60 * 1000;
+const cache = new Map<string, { at: number; res: SearchResponse }>();
+
+function cacheGet(key: string): SearchResponse | null {
+  const hit = cache.get(key);
+  if (!hit) return null;
+  if (Date.now() - hit.at > CACHE_TTL_MS) {
+    cache.delete(key);
+    return null;
+  }
+  // A cached hit costs no credit and no wall-clock, and must not be counted
+  // as a search the run paid for.
+  return { ...hit.res, searchesUsed: 0 };
+}
+
 interface TavilyResult {
   title?: string;
   url?: string;
@@ -61,6 +89,10 @@ export function createTavilyBackend(): SearchBackend {
         search_depth: "basic" as const,
       };
 
+      const key = `${body.query}::${body.max_results}`;
+      const cached = cacheGet(key);
+      if (cached) return cached;
+
       const res = await fetch(ENDPOINT, {
         method: "POST",
         headers: {
@@ -87,7 +119,9 @@ export function createTavilyBackend(): SearchBackend {
           publishedAt: r.published_date ?? null,
         }));
 
-      return { hits, searchesUsed: 1, costUsd: 0 };
+      const out: SearchResponse = { hits, searchesUsed: 1, costUsd: 0 };
+      cache.set(key, { at: Date.now(), res: out });
+      return out;
     },
   };
 }

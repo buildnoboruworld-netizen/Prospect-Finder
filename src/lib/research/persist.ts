@@ -57,6 +57,39 @@ function researchChannelStatus(
  * refuse. The fallback re-implements only its exact-match arms, against the
  * same generated normalized columns the RPC reads.
  */
+/**
+ * A row THIS run already drafted, if the stage is being retried. Matched on
+ * the dedup keys the DB itself enforces (normalized domain / handle), falling
+ * back to the exact name within the run — a lead with neither a domain nor a
+ * handle has no stronger identity to match on.
+ */
+async function findOwnDraft(
+  admin: AdminClient,
+  lead: ScoredLead,
+  runId: string
+): Promise<string | null> {
+  const domain = normalizeDomain(lead.domain);
+  const handle = normalizeIgHandle(lead.instagram_handle);
+
+  const filters: Array<[string, string]> = [];
+  if (domain) filters.push(["domain_normalized", domain]);
+  if (handle) filters.push(["instagram_handle_normalized", handle]);
+  if (filters.length === 0) filters.push(["name", lead.name]);
+
+  for (const [column, value] of filters) {
+    const { data, error } = await admin
+      .from("companies")
+      .select("id")
+      .eq("created_by_run", runId)
+      .eq(column, value)
+      .limit(1);
+    if (error) return null;
+    const hit = (data as Array<{ id: string }> | null)?.[0];
+    if (hit) return hit.id;
+  }
+  return null;
+}
+
 async function probeExactDuplicate(
   admin: AdminClient,
   lead: ScoredLead
@@ -152,6 +185,18 @@ export async function draftLeads(
     // source cannot be drafted, and this is the only place rows are written.
     if (lead.sources.length === 0) {
       skipped.push({ name: lead.name, reason: "no_sources" });
+      continue;
+    }
+
+    // Idempotency first. A tick can insert rows and then die before its run
+    // state is saved (a timeout in the persist step is enough); the retry
+    // re-runs this whole stage. Without this check the retry sees its OWN
+    // rows, calls them duplicates, and reports "0 leads drafted" for a run
+    // that actually drafted them — which is what happened on the first
+    // successful run.
+    const mine = await findOwnDraft(admin, lead, input.runId);
+    if (mine !== null) {
+      draftedIds.push(mine);
       continue;
     }
 

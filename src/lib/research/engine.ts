@@ -102,11 +102,16 @@ const MAX_ECHO_CHARS = 20_000;
 // Sized to the stage's real output, not to the model's ceiling: an unbounded
 // max_tokens is the one way a single call can overshoot the budget cap, which
 // is only checked between calls.
+// Sized so the call can actually FINISH inside a stage slice, not just so the
+// JSON fits. A flash-tier model emits roughly 60 tokens/sec, so a 12k-token
+// discover reply needs ~3 minutes — far past the 44s budget, which is what
+// made discover time out repeatedly. Keep these in step with
+// STAGE_DEADLINE_MS: tokens x ~17ms must leave room for search too.
 const MAX_OUTPUT_TOKENS: Record<ResearchStage, number> = {
-  seed: 2_000,
-  discover: 12_000,
-  qualify: 8_000,
-  score: 12_000,
+  seed: 1_500,
+  discover: 3_500,
+  qualify: 3_500,
+  score: 4_000,
 };
 
 type AdminClient = ReturnType<typeof createAdminClient>;

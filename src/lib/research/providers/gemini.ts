@@ -52,6 +52,17 @@ const MAX_OUTPUT_TOKENS = 8192;
 /** How many search hits to feed the model per query. */
 const HITS_PER_QUERY = 6;
 
+/** Enough to beat the stage clock, low enough not to trip the free search tier. */
+const SEARCH_CONCURRENCY = 3;
+
+/**
+ * Evidence handed to the shaping call. Uncapped, ~12 searches of snippets ran
+ * to ~40KB, and a flash-tier model chewing that alongside a schema is what
+ * blew the stage deadline. Trimming the tail costs little: later queries
+ * mostly repeat brands the earlier ones already surfaced.
+ */
+const MAX_EVIDENCE_CHARS = 24_000;
+
 const capabilities: ProviderCapabilities = {
   /**
    * Host-executed search, NOT native — the free tier has no grounding quota
@@ -85,7 +96,15 @@ const capabilities: ProviderCapabilities = {
    */
   safeForContactData: false,
   promptCaching: false,
-  suggestedQualifyBatchSize: 6,
+  /**
+   * Large on purpose. The free tier's binding constraint is REQUESTS (~20/day
+   * per model), not tokens, and qualify costs 2 calls per batch — so halving
+   * the batch count matters more here than keeping each call small. A run of
+   * ~20 candidates then costs seed 1 + discover 2 + qualify 4 + score 1 = 8
+   * calls. Claude, which is not request-starved, uses a smaller batch for
+   * better per-candidate depth.
+   */
+  suggestedQualifyBatchSize: 12,
   maxOutputTokens: MAX_OUTPUT_TOKENS,
 };
 
@@ -342,16 +361,35 @@ function queryPlanInstruction(call: ProviderCall, directive: SearchDirective): s
   ].join("\n");
 }
 
-/** The retrieved evidence, rendered for the model. */
+/**
+ * The retrieved evidence, rendered for the model. Deduped by URL — the same
+ * brand's page surfaces across several queries, and repeating it wastes the
+ * budget that decides whether the shaping call finishes in time.
+ */
 function formatHits(results: Array<{ query: string; hits: SearchHit[] }>): string {
-  const blocks = results.map(({ query, hits }) => {
-    if (hits.length === 0) return `SEARCH: ${query}\n  (no results)`;
-    const lines = hits.map(
-      (h) =>
-        `  - ${h.title}\n    URL: ${h.url}\n    ${h.snippet.replace(/\s+/g, " ").slice(0, 600)}`
-    );
-    return `SEARCH: ${query}\n${lines.join("\n")}`;
-  });
+  const seen = new Set<string>();
+  const blocks: string[] = [];
+  let used = 0;
+
+  for (const { query, hits } of results) {
+    const fresh = hits.filter((h) => !seen.has(h.url));
+    if (fresh.length === 0) continue;
+    fresh.forEach((h) => seen.add(h.url));
+
+    const block =
+      `SEARCH: ${query}\n` +
+      fresh
+        .map(
+          (h) =>
+            `  - ${h.title}\n    URL: ${h.url}\n    ${h.snippet.replace(/\s+/g, " ").slice(0, 400)}`
+        )
+        .join("\n");
+
+    if (used + block.length > MAX_EVIDENCE_CHARS) break;
+    blocks.push(block);
+    used += block.length;
+  }
+
   return blocks.join("\n\n");
 }
 
@@ -389,20 +427,28 @@ function toGeminiContents(call: ProviderCall): GeminiContent[] {
 function linkAbort(
   outer: AbortSignal,
   timeoutMs: number
-): { signal: AbortSignal; release: () => void } {
+): { signal: AbortSignal; timedOut: () => boolean; release: () => void } {
   const controller = new AbortController();
   const onOuterAbort = () => controller.abort(outer.reason);
 
   if (outer.aborted) controller.abort(outer.reason);
   else outer.addEventListener("abort", onOuterAbort, { once: true });
 
+  // The reason must be a DOMException named "TimeoutError" (or AbortError):
+  // fetch rejects with the abort reason verbatim, and a plain Error would be
+  // classified as a transport failure — which is NOT retryable, so one slow
+  // call would kill an otherwise healthy run.
   const timer = setTimeout(
-    () => controller.abort(new Error("Gemini call exceeded its stage deadline.")),
+    () =>
+      controller.abort(
+        new DOMException("Gemini call exceeded its stage deadline.", "TimeoutError")
+      ),
     Math.max(0, timeoutMs)
   );
 
   return {
     signal: controller.signal,
+    timedOut: () => controller.signal.aborted && !outer.aborted,
     release: () => {
       clearTimeout(timer);
       outer.removeEventListener("abort", onOuterAbort);
@@ -469,7 +515,7 @@ async function callGemini(
   outerSignal: AbortSignal,
   timeoutMs: number
 ): Promise<GeminiResponseBody> {
-  const { signal, release } = linkAbort(outerSignal, timeoutMs);
+  const { signal, timedOut, release } = linkAbort(outerSignal, timeoutMs);
   try {
     const res = await fetch(`${API_BASE}/${modelId}:generateContent`, {
       method: "POST",
@@ -492,12 +538,23 @@ async function callGemini(
     }
   } catch (err) {
     if (err instanceof ProviderError) throw err;
-    if (err instanceof Error && err.name === "AbortError") {
-      throw new ProviderError("timeout", "Gemini call aborted (stage deadline or cancellation).");
+    // Classify off the signal, not the error's name: fetch surfaces whatever
+    // reason we aborted with, and a mislabelled timeout becomes a
+    // non-retryable transport error that fails the whole run.
+    if (timedOut() || (err instanceof Error && /abort|timeout/i.test(err.name))) {
+      throw new ProviderError(
+        "timeout",
+        `Gemini did not answer within this stage's ${Math.round(timeoutMs / 1000)}s slice.`,
+        true
+      );
+    }
+    if (outerSignal.aborted) {
+      throw new ProviderError("timeout", "Research run was cancelled.", false);
     }
     throw new ProviderError(
       "transport",
-      `Could not reach Gemini: ${err instanceof Error ? err.message : String(err)}`
+      `Could not reach Gemini: ${err instanceof Error ? err.message : String(err)}`,
+      true
     );
   } finally {
     release();
@@ -640,7 +697,10 @@ async function generate(call: ProviderCall): Promise<ProviderResponse> {
         systemInstruction,
         generationConfig: {
           maxOutputTokens: 1024,
-          temperature: 0.3,
+          // Deterministic on purpose: a retried stage must re-plan the SAME
+          // queries so the backend's cache serves them instantly instead of
+          // spending the retry's time budget re-searching.
+          temperature: 0,
           responseMimeType: "application/json",
           responseSchema: QUERY_PLAN_SCHEMA,
           thinkingConfig: { thinkingLevel: "low" },
@@ -656,38 +716,50 @@ async function generate(call: ProviderCall): Promise<ProviderResponse> {
       throw new ProviderError("transport", "Gemini returned no search queries to run.");
     }
 
-    // Sequential, not parallel: the free search tier is rate-limited and a
-    // burst gets us 429s. Bail out early if the stage clock runs down — a
-    // partial evidence set still produces a valid (shorter) run.
+    // Small fixed concurrency. Fully sequential blew the stage deadline (12
+    // searches ≈ 12s, leaving too little for the shaping call over ~40KB of
+    // evidence); fully parallel gets 429s from the free search tier. Bail out
+    // early if the clock runs down — a partial evidence set still produces a
+    // valid, shorter run, which beats losing the stage.
     const results: Array<{ query: string; hits: SearchHit[] }> = [];
-    const searchDeadline = deadlineAt - Math.floor(call.limits.deadlineMs * 0.35);
-    for (const q of queries) {
-      if (Date.now() > searchDeadline) {
-        warnings.push(
-          `Stage clock ran out after ${results.length}/${queries.length} searches; findings are partial.`
-        );
-        break;
-      }
-      try {
-        const res = await backend.search({ q, count: HITS_PER_QUERY });
-        results.push({ query: q, hits: res.hits });
-        searches += res.searchesUsed;
-        for (const hit of res.hits) {
-          citations.push({
-            url: hit.url,
-            title: hit.title,
-            quotedText: hit.snippet.slice(0, 300) || null,
-            retrievedAt: new Date().toISOString(),
-            // We executed this search, so the URL is genuinely retrieved —
-            // this is what buildRetrievedUrlSet() trusts.
-            via: "search_api",
-          });
+    const searchDeadline = deadlineAt - Math.floor(call.limits.deadlineMs * 0.45);
+    let cursor = 0;
+
+    const worker = async (): Promise<void> => {
+      while (cursor < queries.length) {
+        const q = queries[cursor++];
+        if (Date.now() > searchDeadline) return;
+        try {
+          const res = await backend.search({ q, count: HITS_PER_QUERY });
+          results.push({ query: q, hits: res.hits });
+          searches += res.searchesUsed;
+          for (const hit of res.hits) {
+            citations.push({
+              url: hit.url,
+              title: hit.title,
+              quotedText: hit.snippet.slice(0, 300) || null,
+              retrievedAt: new Date().toISOString(),
+              // We executed this search, so the URL is genuinely retrieved —
+              // this is what buildRetrievedUrlSet() trusts.
+              via: "search_api",
+            });
+          }
+        } catch (e) {
+          warnings.push(
+            `Search failed for "${q}": ${e instanceof Error ? e.message : "unknown error"}`
+          );
         }
-      } catch (e) {
-        warnings.push(
-          `Search failed for "${q}": ${e instanceof Error ? e.message : "unknown error"}`
-        );
       }
+    };
+
+    await Promise.all(
+      Array.from({ length: Math.min(SEARCH_CONCURRENCY, queries.length) }, worker)
+    );
+
+    if (results.length < queries.length) {
+      warnings.push(
+        `Ran ${results.length}/${queries.length} searches before the stage clock ran down; findings are partial.`
+      );
     }
 
     if (citations.length === 0) {
