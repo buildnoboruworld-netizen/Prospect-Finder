@@ -15,11 +15,12 @@
 --   (Pragaman's 7 are already seeded by migration 0004.)
 -- ============================================================================
 
--- 1) REPLACE THE EMAILS, then run.
+-- 1) Teammate emails (supplied 11 Aug 2026; APPLIED to the live DB the same
+--    day via the service API — keep this file as the canonical record).
 insert into public.users (email, name, role, active) values
-  ('REPLACE_ME_neha@gmail.com',     'Neha',     'member', true),
-  ('REPLACE_ME_sharmila@gmail.com', 'Sharmila', 'member', true),
-  ('REPLACE_ME_aryan@gmail.com',    'Aryan',    'member', true)
+  ('nehasree@noboruworld.com',    'Neha',     'member', true),
+  ('performance@noboruworld.com', 'Sharmila', 'member', true),
+  ('aryan@noboruworld.com',       'Aryan',    'member', true)
 on conflict (email) do nothing;
 
 -- 2) Assignments (keyed by name → industry slugs; assigned_by = Pragaman).
