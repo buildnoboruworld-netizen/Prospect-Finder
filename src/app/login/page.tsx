@@ -6,8 +6,10 @@ import {
   CardTitle,
 } from "@/components/ui/card";
 import { Alert, AlertDescription } from "@/components/ui/alert";
+import { Separator } from "@/components/ui/separator";
 import { LogoMark } from "@/components/logo";
 import { GoogleSignInButton } from "./google-button";
+import { PasswordSignInForm } from "./password-form";
 
 const ERROR_MESSAGES: Record<string, string> = {
   auth_failed: "Google sign-in didn't complete. Please try again.",
@@ -42,9 +44,16 @@ export default async function LoginPage({
               </AlertDescription>
             </Alert>
           )}
+          <PasswordSignInForm />
+          <div className="flex items-center gap-3">
+            <Separator className="flex-1" />
+            <span className="text-xs text-muted-foreground">or</span>
+            <Separator className="flex-1" />
+          </div>
           <GoogleSignInButton />
           <p className="text-center text-xs text-muted-foreground">
-            Access is limited to allowlisted team accounts.
+            Anyone can create an account, but only allowlisted team emails get
+            in.
           </p>
         </CardContent>
       </Card>

@@ -69,6 +69,10 @@ original traced asset kept at `public/noboru-world-logo.svg`; favicon
 - RLS model: allowlisted active users read everything; members write only
   rows they own; admins write all; service role (server) bypasses RLS.
 - The `users` table IS the login allowlist (row must exist + active=true).
+- Auth methods: email+password enabled as the interim method (user decision
+  11 Aug 2026 — test functionality before Google Cloud setup); Google OAuth
+  is the PRD-specified end state and coexists once its provider is enabled.
+  `getAppUser()` links any auth identity to the allowlist row by email.
 - 26 industries seeded from the 11 Aug 2026 allotment sheet (codes PF…CE;
   Clothing/Personal Care sub-industries flattened into own rows). Pragaman's
   7 assignments seed in migration 0004; Neha/Sharmila/Aryan via

@@ -30,7 +30,13 @@ npm run lint
    - SQL Editor: run each file in `supabase/migrations/` **in filename
      order** (or `npx supabase link --project-ref <ref> && npx supabase db push`).
 
-3. **Google sign-in (Supabase Auth)**
+3. **Sign-in.** Two options; both end at the same allowlist gate:
+   - **Quick start (no Google Cloud needed):** email + password is enabled
+     out of the box. For instant sign-ins during testing, turn OFF
+     Supabase → Authentication → Sign In / Providers → Email →
+     "Confirm email". Create your account on /login with your allowlisted
+     email.
+   - **Google sign-in (before rolling out to the team):**
    - Supabase Dashboard → Authentication → Providers → Google: copy the
      **Callback URL** shown there.
    - console.cloud.google.com → APIs & Services → Credentials → Create
