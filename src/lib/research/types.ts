@@ -132,7 +132,13 @@ export class ProviderError extends Error {
   constructor(
     readonly code: ProviderErrorCode,
     message: string,
-    readonly retryable: boolean = false
+    readonly retryable: boolean = false,
+    /**
+     * How long the vendor asked us to wait, when it says so. Free tiers are
+     * request-rate limited, not just quota limited, so retrying immediately
+     * just burns the next window too — the caller paces off this.
+     */
+    readonly retryAfterMs: number | null = null
   ) {
     super(message);
     this.name = "ProviderError";

@@ -23,6 +23,8 @@ export interface RunProgressState {
   budgetHalted: boolean;
   shortfall: ShortfallReport | null;
   message: string;
+  /** Set when the provider throttled us and named a wait. */
+  retryAfterMs?: number | null;
 }
 
 const STEPS: RunStage[] = [...RESEARCH_STAGES, "done"];
@@ -57,6 +59,14 @@ const EXCLUSION_LABELS: Record<string, string> = {
 // One tick at a time, with a beat between them: the engine takes no lock, so
 // two overlapping advances on one run would double-spend the budget.
 const TICK_DELAY_MS = 700;
+
+/**
+ * Free tiers are request-rate limited (Gemini: ~20/min), so a throttled tick
+ * asks us to wait. Ticking again immediately just burns the next window and
+ * looks like a broken run — this is the difference between a run that pauses
+ * for a minute and a run that dies.
+ */
+const MAX_BACKOFF_MS = 120_000;
 
 function isTerminal(stage: RunStage): boolean {
   return stage === "done" || stage === "failed";
@@ -105,6 +115,8 @@ export function RunProgress({
   useEffect(() => {
     if (!auto || isTerminal(progress.stage)) return;
 
+    const wait = Math.min(progress.retryAfterMs ?? TICK_DELAY_MS, MAX_BACKOFF_MS);
+
     const timer = setTimeout(async () => {
       if (inFlight.current) return;
       inFlight.current = true;
@@ -128,10 +140,10 @@ export function RunProgress({
         inFlight.current = false;
         if (mounted.current) setWorking(false);
       }
-    }, TICK_DELAY_MS);
+    }, wait);
 
     return () => clearTimeout(timer);
-  }, [auto, progress.stage, tick, runId, router]);
+  }, [auto, progress.stage, progress.retryAfterMs, tick, runId, router]);
 
   function cancel() {
     setAuto(false);

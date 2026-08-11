@@ -76,6 +76,12 @@ export interface AdvanceResult {
   shortfall: ShortfallReport | null;
   /** One plain line for the run view. */
   message: string;
+  /**
+   * When the provider asked us to wait (free-tier rate limits), how long
+   * before the next tick. The run view sleeps this out instead of hammering
+   * the next window.
+   */
+  retryAfterMs: number | null;
 }
 
 /** Wall-clock left for persistence after the provider work is cut off. */
@@ -126,6 +132,7 @@ interface TickOutcome {
   budgetHalted: boolean;
   error: string | null;
   message: string;
+  retryAfterMs: number | null;
 }
 
 /** Accumulates what a tick spent, so it is recorded even when the tick fails. */
@@ -166,6 +173,7 @@ export async function advanceRun(runId: string): Promise<AdvanceResult> {
         run.stage === "done"
           ? "This run has already finished."
           : `This run failed and will not resume: ${run.error ?? "no reason was recorded."}`,
+      retryAfterMs: null,
     };
   }
 
@@ -209,6 +217,7 @@ export async function advanceRun(runId: string): Promise<AdvanceResult> {
     budgetHalted: false,
     error: null,
     message: "",
+    retryAfterMs: null,
   };
 
   if (state.budget.halted) {
@@ -423,6 +432,8 @@ export async function advanceRun(runId: string): Promise<AdvanceResult> {
     if (isRetryable(err)) {
       // Nothing is lost: the cursor did not move, so the next tick redoes
       // exactly this batch.
+      outcome.retryAfterMs =
+        err instanceof ProviderError ? err.retryAfterMs : null;
       outcome.message = `${describeError(err)} Nothing was lost — start the next tick to continue.`;
     } else {
       outcome.nextStage = "failed";
@@ -695,8 +706,17 @@ function withError(
   };
 }
 
+/**
+ * Rate limits are excluded on purpose. They say nothing about whether this
+ * stage can succeed — on a free tier they are the expected steady state, and
+ * counting them would kill a healthy run for being throttled. The caller
+ * paces off retryAfterMs instead; a genuinely stuck run still dies on the
+ * real error codes.
+ */
 function stageErrorCount(state: RunStageState, stage: ResearchStage): number {
-  return state.errors.filter((e) => e.stage === stage && e.code !== "warning").length;
+  return state.errors.filter(
+    (e) => e.stage === stage && e.code !== "warning" && e.code !== "rate_limit"
+  ).length;
 }
 
 /**
@@ -794,6 +814,7 @@ async function persist(
 
   return {
     stage: outcome.nextStage,
+    retryAfterMs: outcome.retryAfterMs,
     candidatesFound: outcome.candidatesFound,
     leadsDrafted: outcome.leadsDrafted,
     costUsd: totals.cost_usd,
@@ -856,6 +877,7 @@ async function failRun(
 
   return {
     stage: "failed",
+    retryAfterMs: null,
     candidatesFound: run.candidates_found,
     leadsDrafted: run.leads_drafted,
     costUsd: run.cost_usd,

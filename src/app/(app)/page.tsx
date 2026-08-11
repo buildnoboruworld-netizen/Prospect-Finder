@@ -20,6 +20,8 @@ import {
   TableRow,
 } from "@/components/ui/table";
 import type { Assignment, Company, Industry } from "@/lib/types";
+import { getResearchProviderInfo } from "@/lib/research";
+import { RunResearchButton } from "./run-research-button";
 
 type AssignmentRow = Assignment & {
   industry: Industry | null;
@@ -50,6 +52,18 @@ export default async function HomePage() {
   >[];
 
   const isAdmin = user.role === "admin";
+
+  // Resolved once here rather than per card: it is deployment state, not
+  // per-industry state, and it names the missing vars in the button tooltip.
+  const research = getResearchProviderInfo();
+  const researchDisabledReason =
+    research === null
+      ? "Research engine not configured (RESEARCH_PROVIDER names no known provider)."
+      : !research.configured
+        ? research.missingConfig.length > 0
+          ? `Research engine not configured — set ${research.missingConfig.join(", ")}.`
+          : `Research engine not configured — ${research.id} has no usable web search.`
+        : null;
   const myIndustries = industries.filter((i) =>
     assignments.some((a) => a.industry_id === i.id && a.user_id === user.id)
   );
@@ -121,14 +135,10 @@ export default async function HomePage() {
                   </div>
                 </CardContent>
                 <CardFooter className="gap-2">
-                  <Button
-                    variant="secondary"
-                    size="sm"
-                    disabled
-                    title="Research engine ships in Phase 2"
-                  >
-                    Run research
-                  </Button>
+                  <RunResearchButton
+                    industryId={industry.id}
+                    disabledReason={researchDisabledReason}
+                  />
                   <Button asChild variant="outline" size="sm">
                     <Link href={`/companies/new?industry=${industry.id}`}>
                       Add company

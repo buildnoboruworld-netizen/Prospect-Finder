@@ -421,13 +421,30 @@ function apiMessageFrom(bodyText: string): string {
   return bodyText.slice(0, 400);
 }
 
+/** Gemini reports the wait in prose: "Please retry in 40.514918182s". */
+function parseRetryAfterMs(bodyText: string): number | null {
+  const m = /retry in ([\d.]+)s/i.exec(bodyText);
+  if (!m) return null;
+  const seconds = Number(m[1]);
+  if (!Number.isFinite(seconds) || seconds <= 0) return null;
+  // +1s of slack, capped so a bad parse can never park a run for hours.
+  return Math.min(Math.ceil(seconds * 1000) + 1_000, 120_000);
+}
+
 function mapHttpError(status: number, bodyText: string): ProviderError {
   const detail = apiMessageFrom(bodyText);
   if (status === 429) {
+    // The free tier is ~20 requests/minute, and each stage costs two calls,
+    // so a multi-batch run WILL hit this. The body carries the wait as
+    // "Please retry in 40.5s" — honouring it is the difference between the
+    // run pausing for a minute and the run dying.
+    const retryAfterMs = parseRetryAfterMs(bodyText);
     return new ProviderError(
       "rate_limit",
-      `Gemini quota exhausted (429). On the free tier this is the daily request limit — or, if the call carried a search tool, the grounded-request quota, which is zero. ${detail}`,
-      true
+      `Gemini rate limit hit (429). The free tier allows ~20 requests/minute. ` +
+        `${retryAfterMs ? `Waiting ${Math.ceil(retryAfterMs / 1000)}s before the next attempt. ` : ""}${detail}`,
+      true,
+      retryAfterMs
     );
   }
   if (status === 401 || status === 403) {

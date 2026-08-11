@@ -4,21 +4,24 @@ import "server-only";
 // throwing), so resolving a provider is safe from a boolean predicate like
 // isResearchConfigured(); only generate() ever talks to a vendor.
 //
-// `gemini` is a declared id with no adapter behind it — PRD open question #3
-// left the door open, but writing an unused adapter costs maintenance forever.
-// Asking for it fails loudly rather than falling back to another provider:
-// a misconfigured run must never quietly produce fiction.
+// An id with no adapter fails loudly rather than falling back to another
+// provider: a misconfigured run must never quietly produce fiction.
 
 import { getProviderId } from "../config";
 import type { ResearchProvider, ResearchProviderId } from "../types";
 import { ProviderError } from "../types";
 import { createAnthropicProvider } from "./anthropic";
 import { createDemoProvider } from "./demo";
+import { createGeminiProvider } from "./gemini";
 
 type ProviderFactory = () => ResearchProvider;
 
-const FACTORIES: Partial<Record<ResearchProviderId, ProviderFactory>> = {
+// Every id in ResearchProviderId must appear here — a full Record, not a
+// Partial, so adding an id without an adapter is a compile error rather than
+// a runtime "no provider implemented" that only shows up on a live run.
+const FACTORIES: Record<ResearchProviderId, ProviderFactory> = {
   anthropic: createAnthropicProvider,
+  gemini: createGeminiProvider,
   demo: createDemoProvider,
 };
 
