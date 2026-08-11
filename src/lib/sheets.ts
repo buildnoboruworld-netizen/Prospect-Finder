@@ -246,11 +246,13 @@ export async function syncAllTabs(): Promise<SyncResult> {
     return { ok: false, tabs: [], companiesSynced: 0, error: error.message };
   }
 
+  // Every industry tab is rewritten even when empty: keeps the mirror
+  // self-healing (a rejected/deleted last lead disappears from its tab) and
+  // pre-creates all tabs. Still 4 API calls total thanks to batching.
   const all = await fetchSyncableCompanies();
   const tabs = new Map<string, string[][]>();
   for (const industry of industriesData ?? []) {
     const companies = all.filter((c) => c.industry_id === industry.id);
-    if (companies.length === 0) continue;
     tabs.set(industry.name, companies.flatMap(companyRows));
   }
   tabs.set(MASTER_TAB, masterRows(all));

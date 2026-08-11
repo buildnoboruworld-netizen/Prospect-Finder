@@ -60,7 +60,11 @@ original traced asset kept at `public/noboru-world-logo.svg`; favicon
   `.env.local` only.
 - Migrations are plain SQL in `supabase/migrations/` (timestamp-prefixed).
 - `scripts/apply-all-migrations.generated.sql` is a generated concatenation
-  for one-paste SQL-editor setup — regenerate it if migrations change.
+  for one-paste SQL-editor setup — regenerate ONLY with
+  `node scripts/regenerate-combined-sql.mjs`. Never build it via PowerShell:
+  PS 5.1 reads BOM-less UTF-8 as ANSI and once shipped mojibake (â€” for —)
+  into the live DB. For any repo text transform, use Node or pass
+  `-Encoding UTF8` explicitly.
   Never edit an applied migration — add a new file.
 - Apply order matters: 0001 extensions/types/normalizers → 0002 tables+RLS →
   0003 dedup RPC → 0004 seeds.

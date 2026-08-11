@@ -1,23 +1,23 @@
--- GENERATED from supabase/migrations (do not edit — regenerate instead)
+-- GENERATED from supabase/migrations (do not edit — regenerate with scripts/regenerate-combined-sql.mjs)
 -- Run once in the Supabase SQL editor. Order: 20260811090001_extensions_types_helpers.sql, 20260811090002_tables_and_rls.sql, 20260811090003_dedup_check.sql, 20260811090004_seed_industries_admin.sql
 
 -- ═══ 20260811090001_extensions_types_helpers.sql ═══
 -- ============================================================================
--- Noboru Prospector â€” Migration 1: extensions, enum types, normalizers
--- PRD Â§7 (dedup keys), Â§8 (data model)
+-- Noboru Prospector — Migration 1: extensions, enum types, normalizers
+-- PRD §7 (dedup keys), §8 (data model)
 -- ============================================================================
 
--- Trigram similarity for fuzzy name matching (PRD Â§7 key 3)
+-- Trigram similarity for fuzzy name matching (PRD §7 key 3)
 create extension if not exists pg_trgm;
 
--- â”€â”€ Enum types â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+-- ── Enum types ──────────────────────────────────────────────────────────────
 
 create type public.user_role as enum ('admin', 'member');
 
 create type public.company_status as enum
   ('draft', 'approved', 'rejected', 'enriched', 'synced');
 
--- PRD Â§6.3 Digital-Presence Classifier
+-- PRD §6.3 Digital-Presence Classifier
 create type public.digital_presence as enum
   ('WEB_ACTIVE', 'WEB_THIN', 'AMAZON_ONLY', 'IG_ONLY', 'NONE');
 
@@ -26,7 +26,7 @@ create type public.confidence_level as enum ('high', 'med', 'low');
 create type public.contact_role_type as enum ('founder', 'marketing', 'other');
 
 -- Contact channels are 'verified' only when they come from an enrichment API;
--- 'public_generic' when lifted from the brand's own public pages (PRD Â§6.1).
+-- 'public_generic' when lifted from the brand's own public pages (PRD §6.1).
 create type public.contact_channel_status as enum
   ('verified', 'public_generic', 'unknown');
 
@@ -37,11 +37,11 @@ create type public.run_stage as enum
 
 create type public.sync_status as enum ('success', 'error');
 
--- â”€â”€ Normalizers (PRD Â§7 â€” dedup keys) â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+-- ── Normalizers (PRD §7 — dedup keys) ───────────────────────────────────────
 -- Immutable so they can back generated columns; duplicated in
 -- src/lib/normalize.ts for the live check-as-you-type UI. Keep both in sync.
 
--- strip protocol, www., path/query/fragment, lowercase; empty â†’ null
+-- strip protocol, www., path/query/fragment, lowercase; empty → null
 create or replace function public.normalize_domain(raw text)
 returns text
 language sql
@@ -56,7 +56,7 @@ as $$
     '')
 $$;
 
--- accept "@handle", "handle", or a full instagram.com URL; lowercase; empty â†’ null
+-- accept "@handle", "handle", or a full instagram.com URL; lowercase; empty → null
 create or replace function public.normalize_ig_handle(raw text)
 returns text
 language sql
@@ -73,7 +73,7 @@ as $$
     '')
 $$;
 
--- lowercase, strip punctuation, collapse whitespace; empty â†’ null
+-- lowercase, strip punctuation, collapse whitespace; empty → null
 create or replace function public.normalize_name(raw text)
 returns text
 language sql
@@ -87,7 +87,7 @@ as $$
     '')
 $$;
 
--- â”€â”€ updated_at maintenance â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+-- ── updated_at maintenance ──────────────────────────────────────────────────
 
 create or replace function public.set_updated_at()
 returns trigger
@@ -102,11 +102,11 @@ $$;
 
 -- ═══ 20260811090002_tables_and_rls.sql ═══
 -- ============================================================================
--- Noboru Prospector â€” Migration 2: tables, indexes, RLS (PRD Â§8)
+-- Noboru Prospector — Migration 2: tables, indexes, RLS (PRD §8)
 -- RLS rule: members read all, write only rows they own; admins write all.
 -- ============================================================================
 
--- â”€â”€ users â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+-- ── users ───────────────────────────────────────────────────────────────────
 -- Doubles as the login allowlist: a row must exist (active=true) BEFORE a
 -- Google account may use the app. auth_user_id links to auth.users on first
 -- sign-in (done server-side in the auth callback).
@@ -120,18 +120,18 @@ create table public.users (
   created_at    timestamptz not null default now()
 );
 
--- â”€â”€ industries â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+-- ── industries ──────────────────────────────────────────────────────────────
 create table public.industries (
   id          uuid primary key default gen_random_uuid(),
   name        text not null unique,
   slug        text not null unique,
-  code        text unique,        -- team shorthand from the allotment sheet (PF, ML, HSâ€¦)
+  code        text unique,        -- team shorthand from the allotment sheet (PF, ML, HS…)
   -- { revenue_band, follower_band, ticket_context, seed_queries[], exclusions[], notes }
   icp_config  jsonb not null default '{}'::jsonb,
   created_at  timestamptz not null default now()
 );
 
--- â”€â”€ assignments â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+-- ── assignments ─────────────────────────────────────────────────────────────
 -- History-preserving: reassignment = deactivate old row + insert new row.
 create table public.assignments (
   id           uuid primary key default gen_random_uuid(),
@@ -147,7 +147,7 @@ create unique index assignments_active_unique
   on public.assignments (industry_id, user_id) where active;
 create index assignments_user_idx on public.assignments (user_id) where active;
 
--- â”€â”€ runs â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+-- ── runs ────────────────────────────────────────────────────────────────────
 -- Research-engine runs (populated in Phase 2; schema here so companies can
 -- reference their originating run from day one).
 create table public.runs (
@@ -174,7 +174,7 @@ create trigger runs_set_updated_at
   before update on public.runs
   for each row execute function public.set_updated_at();
 
--- â”€â”€ companies â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+-- ── companies ───────────────────────────────────────────────────────────────
 create table public.companies (
   id                            uuid primary key default gen_random_uuid(),
   industry_id                   uuid not null references public.industries (id),
@@ -200,18 +200,18 @@ create table public.companies (
   created_by_run                uuid references public.runs (id),
   created_at                    timestamptz not null default now(),
   updated_at                    timestamptz not null default now(),
-  -- rejected rows must carry the reason they are excluded forever (PRD Â§7)
+  -- rejected rows must carry the reason they are excluded forever (PRD §7)
   constraint rejected_needs_reason
     check (status <> 'rejected' or rejected_reason is not null)
 );
 
--- PRD Â§7 dedup keys 1 & 2 â€” hard unique, race-safe at save time
+-- PRD §7 dedup keys 1 & 2 — hard unique, race-safe at save time
 create unique index companies_domain_normalized_key
   on public.companies (domain_normalized) where domain_normalized is not null;
 create unique index companies_ig_handle_normalized_key
   on public.companies (instagram_handle_normalized) where instagram_handle_normalized is not null;
 
--- PRD Â§7 dedup key 3 â€” trigram fuzzy on normalized name
+-- PRD §7 dedup key 3 — trigram fuzzy on normalized name
 create index companies_name_trgm_idx
   on public.companies using gin (name_normalized gin_trgm_ops);
 
@@ -223,9 +223,9 @@ create trigger companies_set_updated_at
   before update on public.companies
   for each row execute function public.set_updated_at();
 
--- â”€â”€ contacts â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+-- ── contacts ────────────────────────────────────────────────────────────────
 -- Multiple contacts per company (PRD user story 7); new contacts for an
--- existing company ATTACH to it â€” never a new company row.
+-- existing company ATTACH to it — never a new company row.
 create table public.contacts (
   id             uuid primary key default gen_random_uuid(),
   company_id     uuid not null references public.companies (id) on delete cascade,
@@ -252,7 +252,7 @@ create trigger contacts_set_updated_at
   before update on public.contacts
   for each row execute function public.set_updated_at();
 
--- â”€â”€ sheet_sync_log â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+-- ── sheet_sync_log ──────────────────────────────────────────────────────────
 create table public.sheet_sync_log (
   id             uuid primary key default gen_random_uuid(),
   company_id     uuid not null references public.companies (id) on delete cascade,
@@ -264,7 +264,7 @@ create table public.sheet_sync_log (
 
 create index sheet_sync_log_company_idx on public.sheet_sync_log (company_id);
 
--- â”€â”€ audit_log â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+-- ── audit_log ───────────────────────────────────────────────────────────────
 create table public.audit_log (
   id         uuid primary key default gen_random_uuid(),
   user_id    uuid references public.users (id),  -- null = system action
@@ -279,7 +279,7 @@ create table public.audit_log (
 create index audit_log_entity_idx on public.audit_log (entity, entity_id);
 
 -- ============================================================================
--- RLS helpers â€” SECURITY DEFINER so policies on `users` don't recurse.
+-- RLS helpers — SECURITY DEFINER so policies on `users` don't recurse.
 -- ============================================================================
 
 -- internal users.id of the calling session, only if allowlisted + active
@@ -325,7 +325,7 @@ revoke all on function public.app_is_active() from anon;
 revoke all on function public.app_is_admin() from anon;
 
 -- ============================================================================
--- Row Level Security â€” enabled from day one on every table.
+-- Row Level Security — enabled from day one on every table.
 -- ============================================================================
 
 alter table public.users          enable row level security;
@@ -418,10 +418,10 @@ create policy audit_log_insert on public.audit_log for insert
 
 -- ═══ 20260811090003_dedup_check.sql ═══
 -- ============================================================================
--- Noboru Prospector â€” Migration 3: dedup check RPC (PRD Â§7)
+-- Noboru Prospector — Migration 3: dedup check RPC (PRD §7)
 -- Used by manual-add live check-as-you-type and re-checked at save time.
 -- Exact domain / instagram matches BLOCK; fuzzy name+city matches FLAG for
--- human confirmation â€” never auto-merge.
+-- human confirmation — never auto-merge.
 -- ============================================================================
 
 -- compact json view of a company for dedup UI (includes owner + industry)
@@ -488,7 +488,7 @@ begin
     limit 1;
   end if;
 
-  -- fuzzy name (+ city when both known) â€” trigram similarity â‰¥ 0.85 (PRD Â§7)
+  -- fuzzy name (+ city when both known) — trigram similarity ≥ 0.85 (PRD §7)
   if v_name is not null then
     select coalesce(jsonb_agg(m.match), '[]'::jsonb) into v_fuzzy
     from (
@@ -524,30 +524,30 @@ revoke all on function public._company_match_json(public.companies) from anon;
 
 -- ═══ 20260811090004_seed_industries_admin.sql ═══
 -- ============================================================================
--- Noboru Prospector â€” Migration 4: seed data
+-- Noboru Prospector — Migration 4: seed data
 -- Full 26-industry allotment sheet (11 Aug 2026) + admin user + admin's
 -- assignments. Sub-industries (Clothing, Personal Care) are flattened into
 -- their own rows since each is separately assignable and researchable.
--- Exclusion lists = brands too big for the â‚¹40â€“50K retainer ICP; starter
--- lists only â€” admin refines them over time (ICP Studio, Phase 4).
+-- Exclusion lists = brands too big for the ₹40–50K retainer ICP; starter
+-- lists only — admin refines them over time (ICP Studio, Phase 4).
 --
 -- Teammates (Neha, Sharmila, Aryan) are seeded later when their Google
--- emails exist â€” template in scripts/seed-teammates.sql.
+-- emails exist — template in scripts/seed-teammates.sql.
 -- ============================================================================
 
--- â”€â”€ admin (Pragaman) â€” the login allowlist seed â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+-- ── admin (Pragaman) — the login allowlist seed ─────────────────────────────
 insert into public.users (email, name, role, active)
 values ('build.noboruworld@gmail.com', 'Pragaman', 'admin', true)
 on conflict (email) do update set role = 'admin', active = true;
 
--- â”€â”€ industries (shared starter bands) â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+-- ── industries (shared starter bands) ───────────────────────────────────────
 -- jsonb shape: revenue_band, follower_band, ticket_context, seed_queries[],
 -- exclusions[], notes
 with base as (
   select
-    'â‚¹50Lâ€“â‚¹10Cr annual'::text as revenue_band,
-    '2kâ€“100k'::text as follower_band,
-    'can afford â‚¹40â€“50K/month organic-growth retainer'::text as ticket_context
+    '₹50L–₹10Cr annual'::text as revenue_band,
+    '2k–100k'::text as follower_band,
+    'can afford ₹40–50K/month organic-growth retainer'::text as ticket_context
 )
 insert into public.industries (name, slug, code, icp_config)
 select x.name, x.slug, x.code,
@@ -569,7 +569,7 @@ from base b,
       'dog treats brand India Instagram',
       'emerging pet nutrition brands India site:yourstory.com']),
     to_jsonb(array['Heads Up For Tails','Supertails','Drools','Pedigree','Royal Canin','Farmina']),
-    'Starter config â€” refine per run learnings.'),
+    'Starter config — refine per run learnings.'),
 
   ('Pet Care', 'pet-care', 'PC',
     to_jsonb(array[
@@ -579,7 +579,7 @@ from base b,
       'Shark Tank India pet care brand',
       'pet wellness brand India site:yourstory.com']),
     to_jsonb(array['Heads Up For Tails','Supertails','Wiggles','Zigly']),
-    'Starter config â€” refine per run learnings.'),
+    'Starter config — refine per run learnings.'),
 
   ('Organic Food', 'organic-food', 'OF',
     to_jsonb(array[
@@ -589,7 +589,7 @@ from base b,
       'farm to home organic brand India Instagram',
       'organic food brand India site:yourstory.com']),
     to_jsonb(array['24 Mantra','Organic India','Conscious Food','Pro Nature','Organic Tattva']),
-    'Starter config â€” refine per run learnings.'),
+    'Starter config — refine per run learnings.'),
 
   ('Millets', 'millets', 'ML',
     to_jsonb(array[
@@ -600,7 +600,7 @@ from base b,
       'ragi jowar snacks small brand India',
       'millet cookies brand India Instagram']),
     to_jsonb(array['Tata Soulfull','Slurrp Farm','Troo Good','True Elements','24 Mantra','Manna','Nourish You']),
-    'August 2026 manual millet run is the reference method (PRD Â§1).'),
+    'August 2026 manual millet run is the reference method (PRD §1).'),
 
   ('Snacks', 'snacks', 'SN',
     to_jsonb(array[
@@ -610,7 +610,7 @@ from base b,
       'protein snacks startup India Instagram',
       'clean label snacks brand India site:yourstory.com']),
     to_jsonb(array['Haldiram''s','Too Yumm','Farmley','Happilo','The Whole Truth','Yoga Bar','Open Secret']),
-    'Starter config â€” refine per run learnings.'),
+    'Starter config — refine per run learnings.'),
 
   ('Agritech', 'agritech', 'AT',
     to_jsonb(array[
@@ -620,7 +620,7 @@ from base b,
       'farm inputs startup India',
       'agritech brand India site:yourstory.com']),
     to_jsonb(array['DeHaat','Ninjacart','BigHaat','AgroStar']),
-    'Starter config â€” refine per run learnings.'),
+    'Starter config — refine per run learnings.'),
 
   ('Healthy Supplements', 'healthy-supplements', 'HS',
     to_jsonb(array[
@@ -640,7 +640,7 @@ from base b,
       'Shark Tank India jewellery brand',
       'silver jewellery brand India site:yourstory.com']),
     to_jsonb(array['GIVA','CaratLane','BlueStone','Tanishq','Shaya','Palmonas']),
-    'Starter config â€” refine per run learnings.'),
+    'Starter config — refine per run learnings.'),
 
   ('Jewellery (excl. Silver)', 'jewellery', 'JW',
     to_jsonb(array[
@@ -660,9 +660,9 @@ from base b,
       'streetwear small brand India',
       'fashion brand India Shark Tank']),
     to_jsonb(array['Urbanic','NEWME','Snitch','Bewakoof','The Souled Store','Zudio','Shein']),
-    'Starter config â€” refine per run learnings.'),
+    'Starter config — refine per run learnings.'),
 
-  ('Clothing â€” Athleisure', 'clothing-athleisure', 'AL',
+  ('Clothing — Athleisure', 'clothing-athleisure', 'AL',
     to_jsonb(array[
       'athleisure brand India D2C',
       'activewear startup India Instagram',
@@ -672,7 +672,7 @@ from base b,
     to_jsonb(array['HRX','Cultsport','BlissClub','Kica','Technosport']),
     'Parent: Clothing (Men/Women).'),
 
-  ('Clothing â€” Formal', 'clothing-formal', 'FR',
+  ('Clothing — Formal', 'clothing-formal', 'FR',
     to_jsonb(array[
       'formal wear D2C brand India',
       'men''s formal shirts startup India',
@@ -681,7 +681,7 @@ from base b,
     to_jsonb(array['Louis Philippe','Van Heusen','Arrow','Peter England','FableStreet']),
     'Parent: Clothing (Men/Women).'),
 
-  ('Clothing â€” Party', 'clothing-party', 'PY',
+  ('Clothing — Party', 'clothing-party', 'PY',
     to_jsonb(array[
       'party wear brand India D2C',
       'occasion wear startup India Instagram',
@@ -690,7 +690,7 @@ from base b,
     to_jsonb(array['FabAlley','RSVP by Nykaa','Ritu Kumar']),
     'Parent: Clothing (Men/Women).'),
 
-  ('Clothing â€” Casual', 'clothing-casual', 'CS',
+  ('Clothing — Casual', 'clothing-casual', 'CS',
     to_jsonb(array[
       'casual wear D2C brand India',
       'everyday essentials clothing brand India',
@@ -699,7 +699,7 @@ from base b,
     to_jsonb(array['Bewakoof','The Souled Store','XYXX','DaMENSCH','The Pant Project']),
     'Parent: Clothing (Men/Women).'),
 
-  ('Clothing â€” Accessories', 'clothing-accessories', 'AC',
+  ('Clothing — Accessories', 'clothing-accessories', 'AC',
     to_jsonb(array[
       'fashion accessories brand India D2C',
       'bags small brand India Instagram',
@@ -716,7 +716,7 @@ from base b,
       'eco friendly bamboo brand India Instagram',
       'bamboo lifestyle brand India site:yourstory.com']),
     to_jsonb(array['Beco','Bamboo India']),
-    'Starter config â€” refine per run learnings.'),
+    'Starter config — refine per run learnings.'),
 
   ('FinTech', 'fintech', 'FT',
     to_jsonb(array[
@@ -726,9 +726,9 @@ from base b,
       'fintech brand India site:yourstory.com',
       'fintech startup India Shark Tank']),
     to_jsonb(array['Paytm','PhonePe','Groww','Zerodha','CRED','Jupiter','Fi Money']),
-    'Starter config â€” refine per run learnings.'),
+    'Starter config — refine per run learnings.'),
 
-  ('Personal Care â€” Hair Care', 'hair-care', 'HC',
+  ('Personal Care — Hair Care', 'hair-care', 'HC',
     to_jsonb(array[
       'new hair care D2C brand India',
       'ayurvedic hair oil startup brand India',
@@ -738,7 +738,7 @@ from base b,
     to_jsonb(array['Mamaearth','WOW Skin Science','Traya','Bare Anatomy','Arata','Pilgrim']),
     'Parent: Personal Care.'),
 
-  ('Personal Care â€” Skin Care', 'skin-care', 'SC',
+  ('Personal Care — Skin Care', 'skin-care', 'SC',
     to_jsonb(array[
       'skincare D2C small brand India',
       'ayurvedic skincare startup India',
@@ -748,7 +748,7 @@ from base b,
     to_jsonb(array['Mamaearth','Minimalist','Plum','Dot & Key','Foxtale','mCaffeine','The Derma Co']),
     'Parent: Personal Care.'),
 
-  ('Personal Care â€” Intimate Care/FemTech', 'intimate-care-femtech', 'IC',
+  ('Personal Care — Intimate Care/FemTech', 'intimate-care-femtech', 'IC',
     to_jsonb(array[
       'femtech brand India',
       'intimate hygiene brand India D2C',
@@ -765,7 +765,7 @@ from base b,
       'electric mobility startup India Shark Tank',
       'e-bike D2C brand India site:yourstory.com']),
     to_jsonb(array['Ola Electric','Ather','TVS','Bajaj','Hero Electric','Ultraviolette','Simple Energy']),
-    'Starter config â€” refine per run learnings.'),
+    'Starter config — refine per run learnings.'),
 
   ('Health & Wellness Clinics', 'health-wellness-clinics', 'HW',
     to_jsonb(array[
@@ -775,7 +775,7 @@ from base b,
       'skin clinic brand India Instagram',
       'wellness centre India site:yourstory.com']),
     to_jsonb(array['Kaya Clinic','VLCC','Dr Batra''s','Apollo Clinics','Ujala Cygnus']),
-    'Starter config â€” refine per run learnings.'),
+    'Starter config — refine per run learnings.'),
 
   ('Footwear', 'footwear', 'FW',
     to_jsonb(array[
@@ -784,7 +784,7 @@ from base b,
       'sustainable footwear startup India',
       'footwear brand India Shark Tank']),
     to_jsonb(array['Bata','Relaxo','Campus','Neeman''s','Yoho','Comet']),
-    'Starter config â€” refine per run learnings.'),
+    'Starter config — refine per run learnings.'),
 
   ('Home Decor & Furnishing', 'home-decor-furnishing', 'DF',
     to_jsonb(array[
@@ -794,7 +794,7 @@ from base b,
       'decor brand India Shark Tank',
       'artisanal home decor brand India Instagram']),
     to_jsonb(array['Pepperfry','Urban Ladder','Wakefit','HomeTown','Nestasia','Chumbak','Ellementry']),
-    'Starter config â€” refine per run learnings.'),
+    'Starter config — refine per run learnings.'),
 
   ('Toys & Games', 'toys-games', 'TG',
     to_jsonb(array[
@@ -804,7 +804,7 @@ from base b,
       'STEM toys small brand India',
       'kids toys brand India Shark Tank']),
     to_jsonb(array['Funskool','LEGO','Hamleys','Smartivity','Skillmatics','PlayShifu']),
-    'Starter config â€” refine per run learnings.'),
+    'Starter config — refine per run learnings.'),
 
   ('CleanTech & Environment', 'cleantech-environment', 'CE',
     to_jsonb(array[
@@ -814,11 +814,11 @@ from base b,
       'compostable products brand India',
       'sustainable living brand India site:yourstory.com']),
     to_jsonb(array['Beco','Bare Necessities','EcoSoul Home']),
-    'Starter config â€” refine per run learnings.')
+    'Starter config — refine per run learnings.')
 ) as x(name, slug, code, seed_queries, exclusions, notes)
 on conflict (slug) do nothing;
 
--- â”€â”€ admin's own assignments (allotment sheet: Pragaman) â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+-- ── admin's own assignments (allotment sheet: Pragaman) ─────────────────────
 -- ML, HS, BM, HC, EV, DF, CE
 insert into public.assignments (industry_id, user_id, assigned_by)
 select i.id, u.id, u.id
