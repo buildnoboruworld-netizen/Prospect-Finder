@@ -32,7 +32,7 @@ export default async function LoginPage({
             Noboru Prospector
           </CardTitle>
           <CardDescription>
-            Internal lead-gen for Noboru World. Sign in with your team Google
+            Internal lead-gen for Noboru World. Sign in with your team
             account.
           </CardDescription>
         </CardHeader>
