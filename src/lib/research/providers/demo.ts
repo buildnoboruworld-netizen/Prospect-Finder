@@ -32,7 +32,7 @@ const SIMULATED_LATENCY_MS = 450;
 const SAMPLE_WARNING =
   "Sample data — no research was performed. These results are replayed fixtures " +
   "from the millets demo dataset, whatever industry was requested. Set " +
-  "ANTHROPIC_API_KEY and RESEARCH_PROVIDER=anthropic to run real research.";
+  "RESEARCH_PROVIDER and that provider's API key to run real research.";
 
 const CAPABILITIES: ProviderCapabilities = {
   search: "none",

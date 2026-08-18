@@ -26,18 +26,25 @@ export function SampleDataBadge({ className }: { className?: string }) {
   );
 }
 
-/** Page-level statement of the same fact, so the wording lives in one place. */
+/**
+ * Page-level statement of the same fact, so the wording lives in one place.
+ *
+ * The fixtures are a single industry's brands replayed for whatever industry
+ * was run, so this has to say so: a Hair Care run on a misconfigured
+ * deployment produced five millet brands, and only this notice explained why.
+ */
 export function SampleDataNotice({ className }: { className?: string }) {
   return (
     <Alert className={cn(AMBER_ALERT, className)}>
       <AlertTitle>Sample data — no research was performed</AlertTitle>
       <AlertDescription className="text-amber-900 dark:text-amber-200">
-        Everything below is replayed from fixtures by the demo provider. Set{" "}
-        <code className="font-mono text-xs">ANTHROPIC_API_KEY</code> and{" "}
-        <code className="font-mono text-xs">RESEARCH_PROVIDER=anthropic</code> in{" "}
-        <code className="font-mono text-xs">.env.local</code> to run real
-        research. Sample leads cannot be approved and are excluded from the
-        team&apos;s Google Sheet.
+        Everything below is replayed from fixtures by the demo provider, and the
+        fixtures are millet brands regardless of which industry was run — so the
+        companies below are illustrative only, not findings about this industry.
+        To run real research, set <code className="font-mono text-xs">RESEARCH_PROVIDER</code>{" "}
+        and that provider&apos;s API key in the environment, then redeploy.
+        Sample leads cannot be approved and are excluded from the team&apos;s
+        Google Sheet.
       </AlertDescription>
     </Alert>
   );

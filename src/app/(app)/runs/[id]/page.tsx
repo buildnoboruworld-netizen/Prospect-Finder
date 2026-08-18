@@ -131,9 +131,10 @@ export default async function RunPage({
           <AlertDescription>
             <code className="font-mono text-xs">RESEARCH_PROVIDER</code> names a
             provider this build has no adapter for, so this run cannot advance.
-            Set it to <code className="font-mono text-xs">anthropic</code> (with{" "}
-            <code className="font-mono text-xs">ANTHROPIC_API_KEY</code>) or{" "}
-            <code className="font-mono text-xs">demo</code> for sample data.
+            Set it to <code className="font-mono text-xs">anthropic</code>,{" "}
+            <code className="font-mono text-xs">gemini</code>, or{" "}
+            <code className="font-mono text-xs">demo</code> for sample data —
+            each with its own API key in the environment.
           </AlertDescription>
         </Alert>
       )}

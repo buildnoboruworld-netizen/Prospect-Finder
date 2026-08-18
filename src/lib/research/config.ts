@@ -13,10 +13,16 @@ export const STAGE_DEADLINE_MS = 50_000; // Vercel's 60s wall, with headroom
 export function getProviderId(): ResearchProviderId {
   const raw = (process.env.RESEARCH_PROVIDER ?? "").trim().toLowerCase();
   if (raw === "anthropic" || raw === "gemini" || raw === "demo") return raw;
-  // Default to whichever key exists, preferring the PRD-specified path.
+  // Otherwise infer from whichever key exists, preferring the PRD path.
   if (process.env.ANTHROPIC_API_KEY) return "anthropic";
   if (process.env.GEMINI_API_KEY) return "gemini";
-  return "demo";
+  // NOT "demo". Falling back to fixtures means someone who clicks "Run
+  // research" on a misconfigured deployment silently gets sample data for the
+  // wrong industry — which happened on Vercel: a Hair Care run drafted five
+  // fixture MILLET brands. Demo must be opt-in. Naming the PRD provider here
+  // instead makes isResearchConfigured() false, so the button stays disabled
+  // and its tooltip names the missing credential.
+  return "anthropic";
 }
 
 export function getCostCapUsd(): number {
