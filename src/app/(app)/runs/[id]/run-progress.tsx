@@ -297,6 +297,30 @@ export function RunProgress({
                 </Button>
               </>
             )}
+            {!terminal && (
+              // A run is normally driven by this tab. If it was started
+              // somewhere else — or the tab was closed and reopened — this
+              // hands it to the server instead of leaving it stuck.
+              <Button
+                variant="ghost"
+                size="sm"
+                onClick={() => {
+                  setAuto(false);
+                  void fetch("/api/runs/drive", { method: "POST" })
+                    .then((r) => r.json())
+                    .then((r: { advanced?: unknown[]; skipped?: string }) => {
+                      toast.success(
+                        `Server advanced ${r.advanced?.length ?? 0} run(s).`
+                      );
+                      router.refresh();
+                    })
+                    .catch(() => toast.error("Could not reach the server driver."));
+                }}
+                title="Advance in-flight runs from the server, so they finish without this tab"
+              >
+                Advance on server
+              </Button>
+            )}
             {progress.leadsDrafted > 0 && (
               <Button asChild variant="secondary" size="sm">
                 <Link href={`/review?run=${runId}`}>
