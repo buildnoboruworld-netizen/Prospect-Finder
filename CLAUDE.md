@@ -90,9 +90,44 @@ original traced asset kept at `public/noboru-world-logo.svg`; favicon
 - Hand-written DB types in `src/lib/types.ts`; consider
   `npx supabase gen types typescript --linked` once the project is linked.
 
+## Enrichment workflow (decided 18 Aug 2026 — supersedes PRD §6.2)
+
+Contacts come from **RocketReach, looked up by hand** (~10k/month), NOT from a
+Lusha/Apollo API. PRD Phase 3's vendor adapter is therefore **dropped**. The
+tool's job ends at "here are the companies"; humans attach the people.
+
+Two enrichment paths, both live:
+- **Excel workbook** — download → fill contact columns → upload. Column
+  contract is `src/lib/workbook/columns.ts`, shared by export and import;
+  ONE ROW PER CONTACT, company fields repeated (same shape as the Sheet).
+  Two export flavours: existing companies with blank contact columns, and a
+  blank template for companies the tool never found.
+- **Google Sheet two-way** — the sheet is no longer a pure mirror; contact
+  columns are read back. Everything else stays one-way DB → Sheet.
+
+Rules that fell out of those decisions:
+- `Company ID` blank ⇒ create a new company; `Industry Code` (ML, PF, HS…)
+  identifies its industry. Never trust column position — match on header text.
+- Re-upload **updates in place**, matched on email within the company.
+- Conflicts (sheet vs upload): **most recent change wins**.
+- Uploads are allowed for **your own allotted industries** (admin: any).
+- A human-added company **may be approved with no source URLs** — PRD P0's
+  "no sources, no approval" rule exists to stop the AI inventing companies,
+  not to stop the team adding known ones. AI-drafted leads still require them.
+- Phone/Company ID cells are written as **text**, or Excel turns
+  `+919876543210` into `9.19877E+11` and silently destroys the number.
+
 ## Working rules
 
 - TypeScript strict; `npm run build` must pass before every commit.
+- Typecheck with `npm run typecheck` (`next typegen && tsc --noEmit`), not a
+  bare `npx tsc --noEmit`. Next 16 *generates* `.next/types` — the route-aware
+  globals (`LayoutProps`/`PageProps`/`RouteContext`) and `validator.ts`, which
+  is what actually checks every page and layout signature. Without typegen a
+  bare `tsc` skips route validation entirely, so it is the weaker check even
+  when it is green. For the same reason no file should reference those
+  generated globals: declare props inline (`searchParams: Promise<{…}>`) as
+  every page here does, or a fresh clone fails to compile before it can build.
 - Small commits, conventional messages (`feat:`, `fix:`, `chore:`, `docs:`).
 - Lint with `npm run lint` (react-hooks rules are strict — no synchronous
   setState in effect bodies).

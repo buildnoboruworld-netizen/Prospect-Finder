@@ -42,20 +42,33 @@ export default async function AppLayout({
               Noboru <span className="text-primary">Prospector</span>
             </span>
           </Link>
-          <nav className="flex items-center gap-1 text-sm">
+          {/* min-w-0 + scroll: seven links no longer fit a phone, and the
+              alternative is the account menu being pushed off the screen. */}
+          <nav className="flex min-w-0 items-center gap-1 overflow-x-auto text-sm">
             <Button asChild variant="ghost" size="sm" className={navLink}>
               <Link href="/">Home</Link>
+            </Button>
+            <Button asChild variant="ghost" size="sm" className={navLink}>
+              <Link href="/today">Today</Link>
             </Button>
             <Button asChild variant="ghost" size="sm" className={navLink}>
               <Link href="/pipeline">Pipeline</Link>
             </Button>
             <Button asChild variant="ghost" size="sm" className={navLink}>
+              <Link href="/enrich">Enrich</Link>
+            </Button>
+            <Button asChild variant="ghost" size="sm" className={navLink}>
               <Link href="/companies/new">Add company</Link>
             </Button>
             {user.role === "admin" && (
-              <Button asChild variant="ghost" size="sm" className={navLink}>
-                <Link href="/admin/users">Team</Link>
-              </Button>
+              <>
+                <Button asChild variant="ghost" size="sm" className={navLink}>
+                  <Link href="/dashboard">Dashboard</Link>
+                </Button>
+                <Button asChild variant="ghost" size="sm" className={navLink}>
+                  <Link href="/admin/users">Team</Link>
+                </Button>
+              </>
             )}
           </nav>
           <div className="ml-auto flex items-center gap-3">

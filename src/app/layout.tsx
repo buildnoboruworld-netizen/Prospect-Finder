@@ -1,3 +1,4 @@
+import type { ReactNode } from "react";
 import type { Metadata } from "next";
 import { Geist_Mono, Poppins, Space_Grotesk } from "next/font/google";
 import { Toaster } from "@/components/ui/sonner";
@@ -28,7 +29,15 @@ export const metadata: Metadata = {
   description: "Internal lead-generation tool for Noboru World.",
 };
 
-export default function RootLayout({ children }: LayoutProps<"/">) {
+// Props are written out rather than taken from Next's generated `LayoutProps<"/">`
+// global: that helper only exists after `next typegen`/`next dev`/`next build`
+// have written .next/types, so a bare `tsc --noEmit` on a fresh clone failed
+// here with "Cannot find name 'LayoutProps'". Nothing is lost by spelling it
+// out — .next/types/validator.ts still checks this module against
+// `LayoutConfig<"/">` whenever those types are present, and the root route has
+// no params or parallel slots. It also matches every other page and layout in
+// this repo, which all declare their own props.
+export default function RootLayout({ children }: { children: ReactNode }) {
   return (
     <html
       lang="en"
