@@ -136,6 +136,28 @@ function inlineCapped(values: readonly (string | null | undefined)[]): string {
 }
 
 /**
+ * The ICP block for stages 2–4. Before this existed, only the seed stage ever
+ * saw the bands: the score rubric said "inside the revenue and follower
+ * bands" to a model that had never been told what they were. Null when the
+ * plan predates the field (a resumed old run) — the section is simply
+ * omitted and scoring falls back to the generic rubric.
+ */
+export function icpBlock(plan: SeedPlan): string | null {
+  const icp = plan.icp;
+  if (!icp) return null;
+  const body = fieldLines(
+    {
+      "Revenue band (the ICP)": icp.revenueBand,
+      "Follower band (the ICP)": icp.followerBand,
+      "Why this size": icp.ticketContext,
+      "Category fit criteria": icp.fitCriteria,
+    },
+    "(not set)"
+  );
+  return section("ICP — 'the band' in the rubric means exactly this", body);
+}
+
+/**
  * One renderer for the exclusion block so the three stages that inject it can
  * never drift apart in wording or ordering.
  */

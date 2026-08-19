@@ -36,6 +36,19 @@ export interface SeedPlan {
   /** PRD G1: 15–20 approved leads per run. */
   targetLeads: number;
   notes: string | null;
+  /**
+   * The ICP carried through to every later stage. Without this, only the
+   * seed stage ever saw the bands — the score rubric said "inside the
+   * revenue and follower bands" while the scoring model had never been told
+   * what they were, so fit was judged from general vibes. Optional because
+   * runs persisted before this field existed rehydrate without it.
+   */
+  icp?: {
+    revenueBand: string | null;
+    followerBand: string | null;
+    ticketContext: string | null;
+    fitCriteria: string | null;
+  };
 }
 
 // ── Stage 2: discover ───────────────────────────────────────────────────────

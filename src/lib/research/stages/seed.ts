@@ -4,6 +4,7 @@
 // exclusion set, the lead target and the search budget are engine policy, so a
 // vendor cannot widen the brief by returning a different shape.
 
+import type { IcpConfig } from "@/lib/types";
 import type { SeedPlan, StageIO } from "../contracts";
 import type { ExclusionSet } from "../exclusions";
 import { orderedUnique } from "../prompts/render";
@@ -46,7 +47,8 @@ export function buildSeedCall(
 export function toSeedPlan(
   raw: SeedPlanRaw,
   exclusions: ExclusionSet,
-  targetLeads: number
+  targetLeads: number,
+  icp: IcpConfig
 ): SeedPlan {
   return {
     queries: orderedUnique(raw.queries),
@@ -55,5 +57,13 @@ export function toSeedPlan(
     exclusionHandles: exclusions.handles,
     targetLeads,
     notes: raw.notes,
+    // Copied into the plan (not re-read later) so a mid-run icp_config edit
+    // cannot change the rules a run is already being judged by.
+    icp: {
+      revenueBand: icp.revenue_band ?? null,
+      followerBand: icp.follower_band ?? null,
+      ticketContext: icp.ticket_context ?? null,
+      fitCriteria: icp.fit_criteria ?? null,
+    },
   };
 }

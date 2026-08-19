@@ -7,6 +7,7 @@ import {
   clamp,
   exclusionBlock,
   fieldLines,
+  icpBlock,
   joinSections,
   numberedList,
   orderedUnique,
@@ -45,6 +46,7 @@ export function buildDiscoverPrompt(
 
   const context = joinSections([
     section("Query plan — run these in order", numberedList(orderedUnique(plan.queries))),
+    icpBlock(plan),
     section("Exclusions", exclusionBlock(plan)),
     section(
       "Run context",

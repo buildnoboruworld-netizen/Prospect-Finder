@@ -1,0 +1,1370 @@
+{
+  "industries": [
+    {
+      "slug": "millets",
+      "name": "Millets",
+      "what_a_good_lead_is": "A millet-first packaged food brand (snacks, flours, breakfast mixes, batters) at ₹1.5–10Cr or freshly seed-funded, riding the post-2023 'Shree Anna' wave with a live D2C store but almost no educational content in a category buyers research heavily.",
+      "revenue_band": "₹1.5–10Cr annual, or any angel/seed-funded",
+      "follower_band": "3k–80k IG",
+      "sweet_spot_signals": [
+        "Stated revenue ₹1.5–10Cr in founder interviews or a Shark Tank pitch",
+        "Angel/seed round covered by inc42/YourStory/Entrackr (not Series A+)",
+        "100–3,000 reviews on Amazon/BigBasket millet SKUs",
+        "Own Shopify-style D2C site with products but thin recipe/education content",
+        "Founder-led Instagram (3k–80k); no marketing/content roles on LinkedIn or careers page",
+        "Shark Tank appearance without a large follow-on round (Millet Amma pattern)"
+      ],
+      "too_big_signals": [
+        "FMCG-owned (Tata Soulfull) or Series A+/$5M+ raised (Slurrp Farm, Troo Good)",
+        "Stated revenue ₹25Cr+",
+        "250k+ Instagram followers",
+        "Careers page hiring SEO/content/growth roles",
+        "National TV or celebrity campaigns",
+        "Already runs a deep ranking content hub (100+ recipes/articles)"
+      ],
+      "too_small_signals": [
+        "Stated revenue under ₹50L or home-kitchen/SHG scale",
+        "No own website — marketplace or Instagram-only",
+        "Under 100 marketplace reviews and under 2k IG",
+        "Pre-launch or crowdfunding stage"
+      ],
+      "gap_signals": [
+        "Doesn't rank for its own category terms ('millet snacks for kids', 'ragi cookies online')",
+        "AI answers recommend only Slurrp Farm/Soulfull for millet queries, never the brand",
+        "No recipe/education content despite an education-heavy category",
+        "Thin product pages: no FAQs, no schema, no Hindi/vernacular content"
+      ],
+      "scoring_notes": "Fit 5: millet-first packaged food brand (snacks/flours/breakfast/batters), stated revenue ₹1.5–10Cr OR angel/seed round in press, 3k–80k IG, own D2C site with thin recipe/education content, 100–3,000 Amazon/BigBasket reviews, visible founder (interviews or Shark Tank without a mega-deal). Fit 3: ₹50L–1.5Cr but growing (new SKUs, rising reviews), or ₹10–25Cr with no in-house marketing signs. Fit 1–2 too big: FMCG-owned (Tata Soulfull), $5M+/Series A+ raised (Slurrp Farm, Troo Good), revenue ₹25Cr+, 250k+ IG, careers page with SEO/content roles, TV ads, or already runs a large ranking content hub. Fit 1 too small: <₹50L, <2k IG, marketplace/IG-only with <100 reviews, no own site.",
+      "exclusions_add": [
+        "Slurrp Farm",
+        "Tata Soulfull",
+        "Troo Good",
+        "Wholsum Foods"
+      ],
+      "seed_query_upgrades": [
+        "millet snacks startup India seed funding",
+        "millet brand Shark Tank India founder",
+        "ragi jowar snacks D2C brand India founder interview",
+        "millet breakfast brand India Amazon bestseller small"
+      ],
+      "reasoning": "Ceiling grounded on Slurrp Farm (₹95.6Cr FY25, $21M raised), Tata Soulfull (Tata-owned) and Troo Good ($9M round) — all in-housed. Sweet spot grounded on Millet Amma (₹2.2Cr FY23, profitable, Shark Tank no-deal): at 8–15% marketing spend, ₹1.5Cr+ funds a ₹5–6L/yr retainer. Reviewer fix applied: 'no agency polish' replaced with the observable no-marketing-hires proxy."
+    },
+    {
+      "slug": "snacks",
+      "name": "Snacks",
+      "what_a_good_lead_is": "A packaged better-for-you or regional snack brand (makhana, baked namkeen, banana chips, protein snacks) at ₹1.5–15Cr or angel/seed-funded, selling on its own store plus marketplaces, with brand buzz but no organic search presence.",
+      "revenue_band": "₹1.5–15Cr annual, or angel/seed-funded",
+      "follower_band": "5k–150k IG",
+      "sweet_spot_signals": [
+        "Stated revenue ₹1.5–15Cr or angel/seed press coverage",
+        "200–5,000 Amazon/Flipkart reviews across SKUs",
+        "Own D2C store plus marketplaces; site thin beyond product pages",
+        "Shark Tank pitch without a big follow-on round",
+        "Regional/heritage snack angle (makhana, chips, namkeen) with founder story in press",
+        "5k–150k founder-led IG"
+      ],
+      "too_big_signals": [
+        "Acquired or FMCG-owned (Yoga Bar → ITC, Too Yumm → RPSG)",
+        "$5M+ raised or Series A+ (The Whole Truth, Beyond Snack)",
+        "Stated revenue ₹25Cr+ (Happilo scale)",
+        "300k+ IG or celebrity brand ambassador / TV ads",
+        "Careers page hiring growth/SEO/content roles",
+        "Nationwide modern-trade distribution touted in press"
+      ],
+      "too_small_signals": [
+        "Pre-revenue or stated under ₹50L",
+        "Marketplace-only with under 100 reviews",
+        "Under 2k IG and no own website",
+        "Single-city home operation"
+      ],
+      "gap_signals": [
+        "Invisible for its own category terms ('makhana snacks online', 'baked chips India')",
+        "AI answers name only The Whole Truth/Yoga Bar for 'healthy snacks India'",
+        "No ingredient/'is it healthy' content though buyers research exactly that",
+        "IG traction exists but site doesn't own its own brand-name searches"
+      ],
+      "scoring_notes": "Fit 5: packaged snack brand (better-for-you or regional), stated revenue ₹1.5–15Cr OR angel/seed funding in press, 5k–150k IG, own D2C store plus Amazon/Flipkart with 200–5,000 reviews, founder-led press or Shark Tank pitch without a big follow-on round. Fit 3: ₹50L–1.5Cr but multi-channel and growing, or ₹15–25Cr with no in-house marketing signs. Fit 1–2 too big: FMCG-owned/acquired (Yoga Bar–ITC, Too Yumm), $5M+ or Series A+ raised (The Whole Truth, Beyond Snack ₹53Cr FY25), revenue ₹25Cr+ (Happilo ₹280Cr), 300k+ IG, celebrity/TV ads, careers page hiring growth/SEO/content. Fit 1 too small: pre-launch, marketplace-only, <100 reviews, <2k IG, no own site.",
+      "exclusions_add": [
+        "The Whole Truth",
+        "Yoga Bar",
+        "Happilo",
+        "Farmley",
+        "Too Yumm",
+        "Beyond Snack",
+        "Cornitos"
+      ],
+      "seed_query_upgrades": [
+        "healthy snacks D2C startup India seed funding",
+        "regional snacks brand Shark Tank India",
+        "makhana snacks brand India startup",
+        "baked namkeen brand D2C India founder"
+      ],
+      "reasoning": "Ceiling grounded on The Whole Truth ($71M raised), Happilo (₹280Cr FY25), Yoga Bar (ITC-acquired), Beyond Snack (₹53Cr FY25): past ~₹25Cr or Series A, snack brands in-house growth. Floor from the ₹1.5Cr × 8–15% affordability anchor; snacks scale slightly larger than niche millets before in-housing, so sweet-spot top is ₹15Cr."
+    },
+    {
+      "slug": "organic-food",
+      "name": "Organic Food",
+      "what_a_good_lead_is": "A certified organic/natural staples D2C brand (A2 ghee, cold-pressed oils, spices, flours, honey, jaggery) at ₹1.5–12Cr or angel/seed-funded, with a real farm/founder story but no educational content in a trust-and-research-driven category.",
+      "revenue_band": "₹1.5–12Cr annual, or angel/seed-funded",
+      "follower_band": "3k–100k IG",
+      "sweet_spot_signals": [
+        "India Organic / Jaivik Bharat / USDA cert badges shown on site",
+        "Stated revenue ₹1.5–12Cr or an angel/seed round in press",
+        "200–5,000 reviews on Amazon/BigBasket",
+        "Farm/founder story on site but no education or content hub",
+        "3k–100k IG",
+        "Premium repeat-purchase staples (A2 ghee, cold-pressed oil, spices) as hero SKUs"
+      ],
+      "too_big_signals": [
+        "Corporate-owned (24 Mantra/Sresta; Organic India → Tata Consumer)",
+        "Series A+ or ₹25Cr+ revenue (Two Brothers Organic Farms)",
+        "250k+ IG",
+        "Nationwide modern-trade/quick-commerce distribution touted in press",
+        "Careers page hiring content/SEO/growth roles"
+      ],
+      "too_small_signals": [
+        "No certification and no own website",
+        "Farmers'-market or WhatsApp-only sales",
+        "Under 100 marketplace reviews and under 2k IG"
+      ],
+      "gap_signals": [
+        "Absent from research queries buyers actually make ('A2 ghee benefits', 'cold pressed vs refined oil')",
+        "AI answers recommend only Two Brothers/24 Mantra for organic staples",
+        "No content answering trust questions (certification, sourcing, lab tests)",
+        "No Hindi/vernacular content despite tier-2 demand"
+      ],
+      "scoring_notes": "Fit 5: certified organic/natural staples D2C brand (ghee, cold-pressed oils, spices, flours, honey, jaggery), stated revenue ₹1.5–12Cr OR angel/seed round, 3k–100k IG, own site showing India Organic/Jaivik Bharat certs, 200–5,000 marketplace reviews, farm/founder story but little educational content. Fit 3: ₹50L–1.5Cr with certs and growing reviews, or ₹12–25Cr with no in-house marketing signs. Fit 1–2 too big: ₹25Cr+/Series A+ (Two Brothers Organic Farms ₹108Cr FY25), corporate-owned (24 Mantra/Sresta, Organic India–Tata), 250k+ IG, nationwide modern trade, careers page hiring content/SEO. Fit 1 too small: farmers'-market/WhatsApp-only, no certs, no site, <100 reviews, <2k IG.",
+      "exclusions_add": [
+        "Two Brothers Organic Farms",
+        "24 Mantra Organic",
+        "Organic India",
+        "Organic Tattva",
+        "Phalada Pure & Sure",
+        "Conscious Food"
+      ],
+      "seed_query_upgrades": [
+        "A2 ghee cold pressed oil D2C brand India startup",
+        "organic staples brand India seed funding",
+        "farm to fork organic brand India founder story",
+        "organic spices honey jaggery brand India Amazon"
+      ],
+      "reasoning": "Ceiling grounded on Two Brothers Organic Farms (₹108Cr FY25, ₹110Cr Series B) plus corporate-owned 24 Mantra and Organic India. Floor from the ₹1.5Cr anchor. Cert badges are a free observable proxy; trust/education-driven buying makes search gaps unusually monetizable. Also receives farm-direct packaged food leads routed out of Agritech (reviewer overlap fix)."
+    },
+    {
+      "slug": "healthy-supplements",
+      "name": "Healthy Supplements",
+      "what_a_good_lead_is": "A niche supplement/nutraceutical D2C brand (plant protein, gummies, ayurvedic blends, women's/kids'/seniors' nutrition) at ₹2–15Cr or seed-funded, in a research-heavy, high-margin category where buyers Google every ingredient and the brand has no content answering them.",
+      "revenue_band": "₹2–15Cr annual, or seed-funded",
+      "follower_band": "5k–150k IG",
+      "sweet_spot_signals": [
+        "Stated revenue ₹2–15Cr or a seed round in press",
+        "300–5,000 reviews on Amazon/Nykaa/Flipkart",
+        "Doctor/nutritionist/athlete founder visible on site or in press",
+        "Single-niche focus (women's PCOS, kids, sleep, gut) rather than full catalog",
+        "5k–150k IG",
+        "Thin blog while rivals run large content hubs — budget exists, capability doesn't"
+      ],
+      "too_big_signals": [
+        "FMCG parent or strategic exit (OZiva → HUL; Plix → Marico; Wellbeing Nutrition → USV)",
+        "$5M+ raised / Series A+",
+        "Stated revenue ₹30Cr+",
+        "300k+ IG or celebrity/TV campaigns",
+        "Careers page hiring SEO/growth/content roles"
+      ],
+      "too_small_signals": [
+        "White-label/reseller with no brand website",
+        "Under 100 marketplace reviews and under 2k IG",
+        "Pre-launch or single-SKU Instagram shop"
+      ],
+      "gap_signals": [
+        "Doesn't appear for research queries ('best plant protein India', 'magnesium glycinate benefits')",
+        "AI answers list OZiva/MuscleBlaze/HealthKart, never the brand",
+        "Product pages lack ingredient education, FAQs, and schema in a research-heavy category",
+        "Marketplace listicles outrank the brand for its own niche terms"
+      ],
+      "scoring_notes": "Fit 5: niche supplement/nutraceutical D2C brand (plant protein, gummies, ayurvedic blends, women's/kids'/seniors' nutrition), stated revenue ₹2–15Cr OR seed-funded, 5k–150k IG, own site, 300–5,000 Amazon/Nykaa reviews, expert founder (doctor/nutritionist), thin blog despite research-heavy buyer queries. High margins mean retainers are affordable early — lean 4–5 when in range. Fit 3: ₹75L–2Cr but growing reviews/SKUs, or ₹15–30Cr with no in-house signs. Fit 1–2 too big: FMCG parent/exit (OZiva–HUL, Plix–Marico, Wellbeing Nutrition–USV), $5M+ raised, ₹30Cr+ revenue, 300k+ IG, TV/celebrity ads, careers hiring SEO/growth. Fit 1: white-label reseller, <100 reviews, no site.",
+      "exclusions_add": [
+        "OZiva",
+        "Plix",
+        "Wellbeing Nutrition",
+        "MuscleBlaze",
+        "HealthKart",
+        "Kapiva",
+        "Man Matters",
+        "Be Bodywise",
+        "Traya",
+        "Fast&Up"
+      ],
+      "seed_query_upgrades": [
+        "ayurvedic supplement D2C startup India seed funding",
+        "plant protein brand India Shark Tank",
+        "vitamin gummies startup India D2C",
+        "women's health supplement brand India startup"
+      ],
+      "reasoning": "Ceiling grounded on the FMCG land-grab: OZiva→HUL (~₹480Cr), Plix→Marico (₹436Cr FY25), Wellbeing Nutrition→USV (₹170Cr) — supplements in-house or get acquired by ~₹30Cr+. Floor set at ₹2Cr because high AOV/margins make ₹5–6L/yr organic spend rational early."
+    },
+    {
+      "slug": "agritech",
+      "name": "Agritech",
+      "what_a_good_lead_is": "REDEFINED: not farmer-platform unicorns — a small agri business acquired through search: hydroponics/urban-farming kit sellers, niche agri-input or equipment e-stores, nurseries, agritourism — at ₹1.5–10Cr or pre-Series A, whose customers Google how-to queries the brand doesn't rank for. Farm-direct packaged foods route to Organic Food.",
+      "revenue_band": "₹1.5–10Cr annual, or pre-Series A funded",
+      "follower_band": "1k–50k IG (IG secondary; site/YouTube matter more)",
+      "sweet_spot_signals": [
+        "Sells product/service on own site: hydroponics kits, drip/bio-inputs, equipment, nursery plants, farm-stays",
+        "Stated revenue ₹1.5–10Cr, or an angel/seed round in press",
+        "Category demand is how-to search ('hydroponic setup cost India', 'drip irrigation subsidy Maharashtra')",
+        "Founder gives interviews or runs YouTube demos; no growth team evident",
+        "1k–50k IG or an active YouTube channel under 100k subs"
+      ],
+      "too_big_signals": [
+        "$5M+ raised or unicorn-track press (DeHaat, BigHaat, AgroStar, Ninjacart)",
+        "Stated revenue ₹25Cr+",
+        "Field-force/village-center network in the thousands touted in press — sales are not search-driven, bad fit at ANY size",
+        "Farmer app with millions of downloads cited in press",
+        "Careers page hiring growth/SEO/content roles"
+      ],
+      "too_small_signals": [
+        "No website or no product/pricing visible anywhere online",
+        "Pure R&D/pilot-stage deep-tech with no paying customers evident",
+        "One-person operation dependent on government schemes"
+      ],
+      "gap_signals": [
+        "High-volume farmer/urban-gardener how-to queries with no ranking content from the brand",
+        "No Hindi/regional-language content though its buyers search in it",
+        "AI answers on 'best hydroponics setup India' or similar omit the brand",
+        "Competitor blogs and YouTube channels own the category's education queries"
+      ],
+      "scoring_notes": "REDEFINED — not farmer-platform unicorns. Fit 5: small agri business that wins customers via search — hydroponics or urban-farming kit seller, niche agri-input/equipment e-store, nursery, or agritourism — revenue ₹1.5–10Cr OR pre-Series A, sells on own site, customers use how-to searches, content thin. Fit 3: same profile under ₹1.5Cr with a real product and site, OR ₹10–25Cr search-led agri commerce with no in-house growth team. Fit 1–2: field-force/B2B supply-chain platforms at ANY size (sales aren't search-driven — DeHaat, BigHaat, AgroStar), $5M+ raised, ₹25Cr+ stated revenue, or mass-download farmer app. Fit 1: no site/pricing online, or pilot-stage deep-tech. Farm-direct packaged foods route to Organic Food.",
+      "exclusions_add": [
+        "DeHaat",
+        "BigHaat",
+        "AgroStar",
+        "Ninjacart",
+        "WayCool",
+        "Arya.ag",
+        "Absolute",
+        "CropIn"
+      ],
+      "seed_query_upgrades": [
+        "hydroponics kit company India",
+        "plant nursery online store India",
+        "drip irrigation bio fertilizer online store India",
+        "agritourism farm stay startup India"
+      ],
+      "reasoning": "Platform agritech (DeHaat ₹3,000Cr FY25; BigHaat ₹1,100Cr) acquires farmers via field networks, not Google — structurally wrong for the retainer. Reviewer fixes applied: farm-direct foods removed from scope (routed to Organic Food to avoid double-scoring), ₹10–25Cr middle band added at Fit 3, and the stated-revenue disqualifier lowered from ₹50Cr to ₹25Cr in line with other niches."
+    },
+    {
+      "slug": "pet-food",
+      "name": "Pet Food",
+      "what_a_good_lead_is": "A founder-led Indian pet food/treats brand (₹1.5–20Cr or seed-funded) with real Instagram traction and marketplace sales but no owned search presence for the feeding/nutrition queries its buyers actually ask.",
+      "revenue_band": "₹1.5–20Cr annual, or angel/seed/Shark Tank funded",
+      "follower_band": "5k–150k IG",
+      "sweet_spot_signals": [
+        "Angel/seed round or Shark Tank appearance in inc42/yourstory/Tracxn press",
+        "Niche positioning that is content-hungry: fresh-cooked, vegan, cat-only, breed-specific, single-ingredient treats",
+        "Sells on own website plus Amazon/Flipkart with roughly 500–5,000 reviews",
+        "Founder gives interviews/pitches stating revenue in the ₹1.5–20Cr range",
+        "Active IG (5k–150k) with feeding/nutrition content, but site blog is thin or absent"
+      ],
+      "too_big_signals": [
+        "Series A+ or $5M+ total raised per Tracxn/funding press",
+        "Stated revenue ₹25Cr+ in interviews or filings coverage",
+        "300k+ IG followers",
+        "Operates a marketplace/platform play or nationwide pet-store shelf presence",
+        "Careers page or LinkedIn hiring for SEO/content/growth roles"
+      ],
+      "too_small_signals": [
+        "Under 3k IG followers",
+        "Instagram-DM or WhatsApp-only ordering, no own domain",
+        "Marketplace-only with under 100 reviews",
+        "Founded under a year ago with no press at all"
+      ],
+      "gap_signals": [
+        "No blog/guide content for queries like 'how much to feed a Labrador' or 'is [ingredient] safe for dogs'",
+        "Ranks only for its own brand name; category terms owned by Supertails/HUFT/Amazon",
+        "Absent from AI-assistant answers for 'best fresh dog food India'-type questions",
+        "Strong Amazon review count but negligible own-site organic footprint (marketplace-dependent)"
+      ],
+      "scoring_notes": "Score 5: Indian pet food/treats brand, stated revenue ₹1.5–20Cr OR angel/seed/Shark Tank funded, 5k–150k IG, founder-led, content-hungry niche (fresh-cooked, vegan, cat-only, breed-specific), sells own site + Amazon (500–5k reviews), but blog thin/absent and category search owned by marketplaces — clear discovery gap. Score 3–4: right size with own site but revenue unknown and decent traction. Marketplace-only with real traction (100+ reviews) = 2 — needs a site build first; no own domain and thin traction = 1. Score 1–2 TOO BIG: Series A+/$5M+ raised, ₹25Cr+ revenue, 300k+ IG, hiring SEO/content in-house — Supertails/HUFT/Drools/Dogsee scale. Score 1 TOO SMALL: <3k IG, no own domain, <1yr old with no press.",
+      "exclusions_add": [
+        "Supertails",
+        "Heads Up For Tails",
+        "Drools",
+        "Pedigree",
+        "Royal Canin",
+        "Purepet",
+        "Farmina",
+        "Dogsee Chew"
+      ],
+      "seed_query_upgrades": [
+        "D2C fresh pet food brand India",
+        "Shark Tank India pet food treats brands",
+        "pet food startup seed funding India inc42",
+        "vegan dog treats brand India"
+      ],
+      "reasoning": "Ceiling: Supertails (₹63Cr FY24, $63.8M raised) and HUFT (~$50M) both in-house, so past ~₹20–25Cr/Series A is unwinnable; Nootie (₹24Cr ARR) is the borderline top. Floor is the ₹1.5Cr affordability line. Reviewer fix applied: marketplace-only clamped to 2 (site build first) / 1 (no domain), aligning with the food and clothing clusters."
+    },
+    {
+      "slug": "pet-care",
+      "name": "Pet Care",
+      "what_a_good_lead_is": "Either a founder-led grooming/wellness product brand (₹1.5–15Cr or seed-funded) or a 3–15-outlet grooming/boarding chain across 2+ cities with no marketing team — visible on Instagram, invisible in search and Maps.",
+      "revenue_band": "₹1.5–15Cr annual, or angel/seed funded",
+      "follower_band": "3k–100k IG",
+      "sweet_spot_signals": [
+        "Natural/ayurvedic grooming or pet-supplement positioning with seed/angel press (Papa Pawsome pattern)",
+        "3k–100k IG with grooming how-to or pet-parent content",
+        "Sells own site + Amazon/Supertails/Flipkart with 200–3,000 reviews",
+        "Service chains: 3–15 outlets across 2+ cities listed on site/Google Maps, founder still front-facing",
+        "Founder interviews on yourstory/startuptalky stating early-Cr revenue"
+      ],
+      "too_big_signals": [
+        "$5M+ raised or acquired by/part of a platform (Wiggles–Captain Zack pattern)",
+        "250k+ IG followers",
+        "National clinic/retail chain footprint (20+ outlets or every-metro presence)",
+        "Stated revenue ₹20Cr+ in press",
+        "Hiring in-house digital marketing/SEO per careers page or LinkedIn"
+      ],
+      "too_small_signals": [
+        "Under 3k IG followers",
+        "Single outlet or home-run service with no website",
+        "Marketplace-only with under 100 reviews",
+        "No press, no funding trace on Tracxn, founded <1 year ago"
+      ],
+      "gap_signals": [
+        "No content for high-intent problem queries: tick removal, itching, shedding, dog shampoo ingredients",
+        "Service outlets with unclaimed/patchy Google Business Profiles and no city/locality pages",
+        "Active IG but product pages thin — no ingredient or how-to content to rank",
+        "Absent from AI answers for 'best dog shampoo India' / 'pet grooming near me' style queries"
+      ],
+      "scoring_notes": "Winnable is two shapes: (a) grooming/wellness product brand with ₹1.5–15Cr revenue or seed funding, 3k–100k IG, founder-led; (b) multi-location grooming/boarding chain, 3–15 outlets in 2+ cities, no marketing team — needs local SEO/GBP work. Score 5: fits (a) or (b) AND shows a gap — active IG but no problem-query content (ticks, itching, grooming how-tos) or patchy/unclaimed Maps listings. Score 3–4: right size, weaker gap evidence. Marketplace-only product brand with 100+ reviews = 2 (needs a site build first); no own site = 1. Score 1–2 TOO BIG: $5M+ raised or platform-owned (Wiggles, Supertails, HUFT, Zigly, Vetic), 250k+ IG, 20+ outlets. Score 1–2 TOO SMALL: <3k IG, single outlet, <100 reviews.",
+      "exclusions_add": [
+        "Wiggles",
+        "Captain Zack",
+        "Supertails",
+        "Heads Up For Tails",
+        "Zigly",
+        "Vetic",
+        "Just Dogs"
+      ],
+      "seed_query_upgrades": [
+        "natural pet grooming products brand India D2C",
+        "pet supplements startup India seed funding",
+        "pet grooming salon chain India multiple cities",
+        "Shark Tank India pet care brands"
+      ],
+      "reasoning": "Sweet spot calibrated on Papa Pawsome (₹4Cr ARR on ~$950K raised); ceiling on Wiggles ($9.6M raised, acquired Captain Zack) — pet care consolidates earlier than pet food, so lower ceiling. Service chains (local SEO + GBP) are explicitly winnable. Reviewer fix applied: marketplace-only clamped to 2/1 as portfolio-wide."
+    },
+    {
+      "slug": "toys-games",
+      "name": "Toys & Games",
+      "what_a_good_lead_is": "A founder-led Indian toy/game brand (₹1.5–25Cr or seed-funded) selling via its own site plus Amazon/FirstCry, whose parent-audience queries — age-wise picks, gifting, learning benefits — are being answered by marketplaces instead of the brand.",
+      "revenue_band": "₹1.5–25Cr annual, or seed/Shark Tank funded",
+      "follower_band": "5k–150k IG",
+      "sweet_spot_signals": [
+        "Niche positioning: wooden/Montessori, STEM kits, board games, traditional Indian toys (Shumee/Desi Toys profile)",
+        "Seed round or Shark Tank appearance in inc42/yourstory/Tracxn press",
+        "Own website plus Amazon/FirstCry presence with roughly 300–5,000 reviews",
+        "5k–150k IG with parent-focused content and gifting posts",
+        "Founder interviews stating revenue between ₹1.5Cr and ₹25Cr"
+      ],
+      "too_big_signals": [
+        "Stated revenue ₹40Cr+ (Skillmatics scale)",
+        "$8M+ raised or Series A with a large round (Skillmatics, PlayShifu)",
+        "250k+ IG followers",
+        "International retail distribution (US/UK big-box or global Amazon push in press)",
+        "Hiring in-house content/SEO/growth roles"
+      ],
+      "too_small_signals": [
+        "Under 3k IG followers",
+        "Instagram/Etsy-only sales, no own domain",
+        "Revenue signals clearly under ₹50L",
+        "No marketplace presence and no press"
+      ],
+      "gap_signals": [
+        "No age-by-age or occasion content (best toys for 2-year-old, Diwali/birthday gift guides) on site",
+        "Category queries like 'wooden toys for 1 year old India' answered by FirstCry/Amazon/listicles, not the brand",
+        "Product pages lack the developmental-benefit copy parents actually search for",
+        "Absent from AI-assistant gift-recommendation answers where marketplaces dominate"
+      ],
+      "scoring_notes": "Score 5: Indian toy/game brand (wooden, Montessori, STEM, board games, traditional), stated revenue ₹1.5–25Cr OR seed/Shark Tank funded, 5k–150k IG, sells own site + Amazon/FirstCry (300–5k reviews), and lacks age-wise/gifting guide content while marketplaces own those parent queries — discovery gap. Score 3–4: right size but marketplace-dependent or traction unclear; also 3: ₹25–40Cr with no in-house content/SEO hiring visible (toys in-house late). Score 1–2 TOO BIG: ₹40Cr+ revenue, $8M+/Series A raised, 250k+ IG, international retail distribution, in-house content hiring — Skillmatics/Smartivity/PlayShifu scale. Score 1–2 TOO SMALL: <3k IG, Instagram/Etsy-only, no own domain, revenue clearly under ₹50L.",
+      "exclusions_add": [
+        "Skillmatics",
+        "Smartivity",
+        "PlayShifu",
+        "Funskool",
+        "Hamleys",
+        "FirstCry"
+      ],
+      "seed_query_upgrades": [
+        "wooden toys D2C brand India",
+        "Montessori toys brand India online store",
+        "board game startup India Shark Tank",
+        "STEM toys startup India seed funding"
+      ],
+      "reasoning": "Ceiling: Skillmatics (₹103Cr FY25, ~$24M) and Smartivity run in-house marketing. Toys in-house later than niche food, so the hard disqualifier stays at ₹40Cr+ while — per the reviewer's contradiction fix — ₹25–40Cr now explicitly scores 3 absent in-house hiring. Sweet spot grounded in Shumee (<₹10Cr, seed) down to Desi Toys at the ₹1.5Cr floor."
+    },
+    {
+      "slug": "fast-fashion",
+      "name": "Fast Fashion",
+      "what_a_good_lead_is": "A trend-led drop-cycle apparel brand (co-ords, Gen Z women/menswear) with a big Instagram audience but near-zero Google/AI-answer presence for the category terms it should own.",
+      "revenue_band": "₹1.5–30Cr, or angel/seed-funded",
+      "follower_band": "20k–400k IG",
+      "sweet_spot_signals": [
+        "20k–400k IG followers with active reels and weekly/fortnightly drops",
+        "Fresh angel/seed round covered by inc42/YourStory/Entrackr",
+        "Shark Tank India appearance (aired episode)",
+        "500–20k cumulative Myntra/Amazon/Ajio reviews",
+        "Founder active on LinkedIn/podcasts/interviews (reachable decision-maker)",
+        "Own Shopify site with 100+ SKUs but no blog, lookbook or guide content"
+      ],
+      "too_big_signals": [
+        "Series A or later, or any raise ≥ ₹50Cr",
+        "25+ own physical stores",
+        "500k+ IG followers",
+        "Stated revenue above ~₹40Cr in press/interviews",
+        "Owned by a house (TMRW, ABFRL, Reliance, Myntra private label)",
+        "Careers page or LinkedIn hiring in-house SEO/content/growth roles",
+        "National celebrity ambassador or IPL-scale campaigns"
+      ],
+      "too_small_signals": [
+        "<5k IG followers and no own website (IG-DM ordering)",
+        "<100 total marketplace reviews and <20 SKUs",
+        "Launched under 12 months ago with no funding"
+      ],
+      "gap_signals": [
+        "Strong reels engagement but site has no blog, lookbook or style-guide pages",
+        "Myntra/Ajio listings outrank the brand's own site even for its brand name",
+        "Absent from 'best co-ord sets / best Gen Z fashion brands India' listicles and AI answers",
+        "Product pages thin: no fabric, fit or size-guide content"
+      ],
+      "scoring_notes": "Trend-led drop-cycle apparel (co-ords, Gen Z wear). 5: est ₹1.5–30Cr — proxies: 20k–400k IG, 500–20k marketplace reviews, 0–10 stores — or fresh angel/seed press; strong IG but thin site (no blog/lookbooks, bare PDPs) and absent from 'best fashion brands India' listicles/AI answers; founder visible. 3: just outside band (<₹1.5Cr but funded or fast-growing IG; or ₹30–40Cr bootstrapped with no in-house SEO hiring visible). 1: Series A+ or raise ≥₹50Cr, 25+ stores, 500k+ IG, stated rev >₹40Cr, house-owned (TMRW/ABFRL/Reliance), hiring in-house SEO/content (ref: Snitch ₹520Cr, NEWME ₹180Cr = too big) — or too small: <5k IG, no site, <100 reviews.",
+      "exclusions_add": [
+        "Snitch",
+        "NEWME",
+        "Urbanic",
+        "Zudio",
+        "Bewakoof",
+        "Freakins",
+        "Virgio"
+      ],
+      "seed_query_upgrades": [
+        "emerging Gen Z fashion brands India 2026 co-ord sets",
+        "Indian fast fashion startup seed funding inc42 entrackr",
+        "Shark Tank India clothing brand deal fast fashion",
+        "new womenswear label India weekly drops Shopify"
+      ],
+      "reasoning": "Ceiling anchored on Snitch (₹520Cr FY25, Series B) and NEWME (₹180Cr, Series B); Littlebox marks the funded mid-tier still winnable. Fashion scales further before in-housing, so bootstrapped ceiling ~₹30Cr; floor ₹1.5Cr from the retainer anchor. Fast-fashion IGs run follower-heavy, hence 400k top."
+    },
+    {
+      "slug": "clothing-athleisure",
+      "name": "Clothing — Athleisure",
+      "what_a_good_lead_is": "An activewear/gym-wear D2C brand (₹1.5–20Cr or seed-funded) whose performance story lives only on Instagram while high-intent searches and AI answers for its niche go to BlissClub/HRX-scale players.",
+      "revenue_band": "₹1.5–20Cr, or angel/seed-funded",
+      "follower_band": "10k–250k IG",
+      "sweet_spot_signals": [
+        "10k–250k IG with community content (run clubs, trainers, transformation reels)",
+        "Fresh angel/seed round in startup press (inc42/YourStory/Entrackr)",
+        "300–10k Amazon/Myntra reviews proving a revenue floor",
+        "Shark Tank India activewear pitch",
+        "Founder visible and pitching the fabric/fit story in interviews",
+        "0–5 own stores or gym-partnership pop-ups"
+      ],
+      "too_big_signals": [
+        "Series A or later, or any raise ≥ ₹50Cr",
+        "20+ own stores",
+        "500k+ IG followers",
+        "Stated revenue above ~₹35Cr",
+        "Celebrity or house brand (HRX, Cultsport pattern)",
+        "Hiring in-house SEO/content/growth roles on careers page or LinkedIn"
+      ],
+      "too_small_signals": [
+        "<5k IG and IG-DM-only ordering, no website",
+        "<100 total marketplace reviews",
+        "Single-product label under 1 year old, no funding"
+      ],
+      "gap_signals": [
+        "Doesn't rank for its own category ('gym t-shirts India', 'yoga pants India') — marketplaces and listicles do",
+        "Performance/fabric claims on IG but no fabric-tech or workout content on the site",
+        "Absent from 'best activewear brands India' listicles and AI answers",
+        "Amazon listing has 1k+ reviews but own site is buried even for brand-name search"
+      ],
+      "scoring_notes": "Activewear/gym/yoga-wear D2C. 5: est ₹1.5–20Cr — proxies: 10k–250k IG, 300–10k Amazon/Myntra reviews, 0–5 stores — or fresh angel/seed round; performance claims on IG but no fabric-tech/workout content on site; absent from 'best activewear brands India' listicles/AI answers; founder-led community visible. 3: <₹1.5Cr but funded or clearly fast-growing IG; or ₹20–35Cr bootstrapped with no in-house SEO hiring visible. 1: Series A+ or raise ≥₹50Cr (BlissClub ₹160Cr Series B, 40+ stores = too big), 20+ stores, 500k+ IG, stated rev >₹35Cr, celeb/house brand (HRX, Cultsport), Boldfit-scale bootstrapped giants, in-house SEO/content roles — or too small: <5k IG, IG-only ordering, <100 reviews.",
+      "exclusions_add": [
+        "BlissClub",
+        "Technosport",
+        "Cultsport",
+        "HRX",
+        "Alcis Sports",
+        "Boldfit"
+      ],
+      "seed_query_upgrades": [
+        "new activewear brand India seed funding",
+        "Indian gymwear D2C brand emerging bootstrapped",
+        "Shark Tank India activewear athleisure pitch",
+        "yoga wear brand India Shopify women founders"
+      ],
+      "reasoning": "BlissClub (₹131.5Cr FY25, ₹160Cr Series B, 40+ stores) is the too-big archetype; bootstrapped ceiling ~₹20Cr since performance content is the brand's core channel. Reviewer fixes applied: Boldfit added to exclusions (several-hundred-crore bootstrapped gym-wear giant that would otherwise pass the filters) and the 3-band extended to ₹35Cr to close the hole against the >₹35Cr disqualifier."
+    },
+    {
+      "slug": "clothing-formal",
+      "name": "Clothing — Formal",
+      "what_a_good_lead_is": "A premium shirting/workwear/tailoring label (₹1.5–20Cr) losing high-intent formal-wear searches to legacy giants because its site has no non-branded organic footprint.",
+      "revenue_band": "₹1.5–20Cr, or angel/seed-funded",
+      "follower_band": "5k–150k IG",
+      "sweet_spot_signals": [
+        "5k–150k IG with premium product photography and fit-story content",
+        "Premium AOV visible on site (₹1.5k+ shirts, ₹5k+ blazers) with 50+ SKUs",
+        "300–5k Myntra/Amazon reviews or a made-to-measure studio presence",
+        "0–5 stores/studios in metros",
+        "Founder tells the tailoring/fabric story in interviews or LinkedIn",
+        "Bootstrapped or angel/seed-funded per startup press"
+      ],
+      "too_big_signals": [
+        "Series A or later, or any raise ≥ ₹50Cr",
+        "15+ own stores",
+        "400k+ IG followers",
+        "Stated revenue above ~₹35Cr",
+        "Legacy or house-owned label (ABFRL, Raymond, Arvind pattern)",
+        "Hiring in-house SEO/content roles"
+      ],
+      "too_small_signals": [
+        "<3k IG and no own website",
+        "<50 marketplace reviews and catalog under 20 SKUs",
+        "Local tailor shop without a D2C brand identity"
+      ],
+      "gap_signals": [
+        "Zero non-branded rank for high-intent queries ('formal shirts for men India', 'women's office blazers')",
+        "No fit/fabric/styling guide content despite premium positioning",
+        "Absent from 'best shirt brands India' listicles and AI answers where legacy brands dominate",
+        "Myntra/Amazon presence outranks the brand's own D2C site"
+      ],
+      "scoring_notes": "Office/formal wear D2C — shirting, workwear, blazers, made-to-measure (men or women). 5: est ₹1.5–20Cr — proxies: 5k–150k IG, premium PDPs (₹1.5k+ shirts), 300–5k marketplace reviews, 0–5 stores/studios — bootstrapped or seed; high-intent searches ('formal shirts men India', 'women's office blazers') are won by legacy brands while this brand has zero non-branded rank and no fit/fabric guides. 3: very new but funded; or ₹20–35Cr with no in-house SEO signs. 1: Series A+/raise ≥₹50Cr, 15+ stores, 400k+ IG, stated rev >₹35Cr, legacy/house-owned (ABFRL, Raymond; Rare Rabbit ₹637Cr = far too big), in-house SEO/content hiring — or too small: <3k IG, no site, <50 reviews.",
+      "exclusions_add": [
+        "Rare Rabbit",
+        "FableStreet",
+        "Bombay Shirt Company",
+        "Blackberrys",
+        "Louis Philippe",
+        "Van Heusen",
+        "Peter England",
+        "Raymond",
+        "Arrow"
+      ],
+      "seed_query_upgrades": [
+        "premium shirt brand India D2C bootstrapped",
+        "workwear brand for women India startup funding",
+        "made to measure menswear India startup",
+        "office wear D2C label India emerging"
+      ],
+      "reasoning": "Rare Rabbit (₹637Cr FY24) defines far-too-big; FableStreet is a funded brand house. Formal wear is search-led, not reels-led, so classic 5k–150k band and the strongest SEO upside of the clothing set. Reviewer fix applied: 3-band extended to ₹35Cr to close the hole against the >₹35Cr disqualifier."
+    },
+    {
+      "slug": "clothing-party",
+      "name": "Clothing — Party",
+      "what_a_good_lead_is": "A small occasion/party-wear label (₹1–15Cr) that Instagram loves but that never appears in the 'sangeet outfit'/'cocktail dress India' searches and AI answers where buyers actually decide.",
+      "revenue_band": "₹1–15Cr (low end only if funded/growing)",
+      "follower_band": "10k–300k IG",
+      "sweet_spot_signals": [
+        "10k–300k IG — highly visual category runs follower-heavy at small revenue",
+        "Stocked on Nykaa Fashion/Aza/Pernia's Pop-Up alongside its own site",
+        "100–3k marketplace/site reviews",
+        "Wedding-season and festive drops with strong reel engagement",
+        "Founder/designer personally visible and styling customers",
+        "Bootstrapped or fresh angel/seed round in startup press"
+      ],
+      "too_big_signals": [
+        "Series A or later, or any raise ≥ ₹50Cr",
+        "15+ own stores",
+        "500k+ IG followers",
+        "Stated revenue above ~₹25Cr",
+        "Scaled occasion house or designer chain (Indya, Libas, Koskii pattern)",
+        "Hiring in-house SEO/content/growth roles"
+      ],
+      "too_small_signals": [
+        "<5k IG and DM-to-order only (no website)",
+        "Boutique or reseller aggregating other labels rather than an own brand",
+        "Under 20 SKUs, launched <12 months ago"
+      ],
+      "gap_signals": [
+        "Discovery queries ('sangeet outfit ideas', 'cocktail dress India') go to Myntra and listicles the brand isn't in",
+        "IG-first label with no occasion-edit or styling content pages on its site",
+        "Absent from wedding-season listicles and 'best party wear brands India' AI answers",
+        "Site is a bare Shopify catalog: no lookbooks, occasion edits or size guides"
+      ],
+      "scoring_notes": "Occasion/party-wear label — cocktail dresses, sequins, festive co-ords, sangeet/cruise edits. 5: est ₹1.5–15Cr — ₹1–1.5Cr only if funded or clearly growing (rising reviews, new stockists), else 3 — proxies: 10k–300k IG, stocked on Nykaa Fashion/Aza/Pernia's plus own site, 100–3k reviews; discovery queries ('sangeet outfit ideas', 'cocktail dress India') go to Myntra/listicles the brand is absent from, ditto AI answers; no occasion-edit/styling content on site. 3: IG-only label with 20k+ followers now building a site; or ₹15–25Cr with no in-house SEO signs. 1: Series A+ or raise ≥₹50Cr, 15+ stores, 500k+ IG, stated rev >₹25Cr, scaled house (Indya, Libas, Koskii, NEWME) — or too small: <5k IG, DM-only ordering, boutique reseller.",
+      "exclusions_add": [
+        "Indya",
+        "FabAlley",
+        "Libas",
+        "Koskii",
+        "Kalki Fashion",
+        "NEWME",
+        "Global Desi"
+      ],
+      "seed_query_upgrades": [
+        "occasion wear label India Instagram cocktail dresses",
+        "festive wear D2C startup India funding",
+        "sequin party wear brand India Shopify",
+        "emerging designer party wear label India Nykaa Fashion"
+      ],
+      "reasoning": "Scaled occasion houses (Indya/FabAlley, Libas, Koskii) and NEWME own the top; below sits a long tail of designer-founder labels with high AOV (₹8–15k). Reviewer fix applied: the ₹1Cr floor is now explicitly conditional in scoring_notes — ₹1–1.5Cr scores 5 only if funded or visibly growing, else 3."
+    },
+    {
+      "slug": "clothing-casual",
+      "name": "Clothing — Casual",
+      "what_a_good_lead_is": "A bootstrapped streetwear/casual-basics brand (₹1.5–25Cr) selling mostly through Myntra/Amazon while its own site captures none of the non-branded search demand.",
+      "revenue_band": "₹1.5–25Cr, or angel/seed-funded",
+      "follower_band": "15k–300k IG",
+      "sweet_spot_signals": [
+        "15k–300k IG with meme/drop-culture content and real engagement",
+        "500–15k cumulative Myntra/Amazon reviews proving a revenue floor",
+        "Own Shopify site with 100+ SKUs but product-grid only (no content)",
+        "Bootstrapped with visible traction, or fresh angel/seed round",
+        "Shark Tank India appearance",
+        "Founder active on LinkedIn/X telling the growth story"
+      ],
+      "too_big_signals": [
+        "Series A or later, or any raise ≥ ₹50Cr",
+        "25+ own stores",
+        "500k+ IG followers",
+        "Stated revenue above ~₹40Cr",
+        "House-owned (TMRW/Bewakoof pattern, ABFRL, Reliance)",
+        "Hiring in-house SEO/content/growth roles",
+        "Celebrity-founder brand (Wrogn pattern)"
+      ],
+      "too_small_signals": [
+        "<5k IG and no own website",
+        "<100 total marketplace reviews and under 20 SKUs",
+        "Print-on-demand/dropship store without an own brand identity"
+      ],
+      "gap_signals": [
+        "Sells mostly via Myntra/Amazon; own site has near-zero non-branded organic",
+        "No rank for its own niches ('oversized t-shirts India', 'baggy jeans brand India')",
+        "Absent from streetwear listicles and 'best t-shirt brands India' AI answers",
+        "Drops announced only on IG; site has no content beyond the product grid"
+      ],
+      "scoring_notes": "Casualwear/streetwear D2C — graphic tees, oversized fits, denim, basics. 5: est ₹1.5–25Cr — proxies: 15k–300k IG, 500–15k Myntra/Amazon reviews, 0–10 stores — bootstrapped or seed; marketplace listings outrank own site, zero non-branded rank ('oversized t-shirts India'), absent from streetwear listicles/AI answers, site is product-grid only. 3: <₹1.5Cr but funded or virally growing IG; or ₹25–40Cr bootstrapped with no in-house SEO hiring visible. 1: Series A+ or raise ≥₹50Cr (Bonkers Corner ₹123Cr rev + $10.5M Series A = too big; Souled Store ₹492Cr), 25+ stores, 500k+ IG, stated rev >₹40Cr, house-owned (TMRW/Bewakoof) — or too small: <5k IG, no site, <100 reviews.",
+      "exclusions_add": [
+        "The Souled Store",
+        "Bewakoof",
+        "Bonkers Corner",
+        "Snitch",
+        "Wrogn",
+        "Urban Monkey"
+      ],
+      "seed_query_upgrades": [
+        "streetwear brand India bootstrapped revenue interview",
+        "oversized t-shirt brand India D2C seed funding",
+        "Shark Tank India streetwear clothing deal",
+        "denim D2C startup India emerging brand"
+      ],
+      "reasoning": "Souled Store (₹492Cr FY25) and Bonkers Corner (₹123Cr, $10.5M Series A) mark the in-housed ceiling; Bewakoof is TMRW-owned. India's most crowded D2C segment has a deep ₹2–15Cr bootstrapped tail living off IG + Myntra — the exact marketplace-dependency gap an organic agency fixes. Ceiling ₹25Cr bootstrapped, floor ₹1.5Cr."
+    },
+    {
+      "slug": "clothing-accessories",
+      "name": "Clothing — Accessories",
+      "what_a_good_lead_is": "A fashion-accessories D2C brand — bags, wallets, belts, caps, socks, scarves, sunglasses — (₹1.5–15Cr) with marketplace-proven demand but zero presence in the gifting and 'best of' searches that drive category discovery.",
+      "revenue_band": "₹1.5–15Cr (₹1–1.5Cr if seed-funded)",
+      "follower_band": "5k–150k IG",
+      "sweet_spot_signals": [
+        "5k–150k IG with product-craft content (materials, making-of reels)",
+        "300–10k Amazon/Flipkart reviews and Nykaa/Myntra presence",
+        "Distinct material/design story (vegan leather, handloom, India-inspired prints)",
+        "Expanding from one hero product into a range (wallets → bags → belts)",
+        "Fresh angel/seed round or Shark Tank India pitch",
+        "Founder reachable and doing press/podcasts"
+      ],
+      "too_big_signals": [
+        "Series B or later, or any raise ≥ ₹50Cr",
+        "Legacy accessory house (Hidesign, Lavie, Caprese pattern)",
+        "300k+ IG followers",
+        "Stated revenue above ~₹25Cr",
+        "10k+ reviews on a single Amazon listing plus large store network",
+        "Hiring in-house SEO/content roles"
+      ],
+      "too_small_signals": [
+        "<3k IG and no own website",
+        "<50 total marketplace reviews",
+        "Single-SKU label or reseller of imported generic stock"
+      ],
+      "gap_signals": [
+        "Gifting and how-to queries ('office laptop bag women', 'gifts under 2000') go to listicles the brand isn't in",
+        "Amazon reviews prove demand but the own site is invisible in search",
+        "Absent from 'best handbag/wallet brands India' listicles and AI answers",
+        "No material/care/styling content despite premium claims (vegan leather etc.)"
+      ],
+      "scoring_notes": "Fashion accessories D2C — bags, wallets, belts, caps, socks, scarves, sunglasses (non-jewellery). 5: est ₹1.5–15Cr (₹1–1.5Cr only if seed-funded, else 3) — proxies: 5k–150k IG, 300–10k Amazon/Flipkart reviews, Nykaa/Myntra presence; demand proven on marketplaces but own site invisible: gifting/how-to queries ('office laptop bag women', 'gifts under 2000') go to listicles the brand is absent from, ditto AI answers; no material/care content. 3: hero-product brand just expanding to a range; or ₹15–25Cr with no in-house SEO signs. 1: Series B+/raise ≥₹50Cr (Zouk, DailyObjects class), legacy houses (Hidesign, Lavie, Caprese), eyewear giants (Lenskart, Fastrack), 300k+ IG, stated rev >₹25Cr — or too small: <3k IG, <50 reviews, single SKU.",
+      "exclusions_add": [
+        "Zouk",
+        "DailyObjects",
+        "Mokobara",
+        "Nasher Miles",
+        "Lavie",
+        "Hidesign",
+        "Caprese",
+        "Baggit",
+        "Lenskart",
+        "Fastrack"
+      ],
+      "seed_query_upgrades": [
+        "handbag brand India D2C startup seed funding",
+        "vegan leather accessories brand India emerging",
+        "Shark Tank India bags wallets accessories deal",
+        "caps socks D2C brand India small"
+      ],
+      "reasoning": "Zouk (₹125Cr FY25) and DailyObjects ($10M+) mark the in-housed top. Reviewer fixes applied: floor raised to ₹1.5Cr (lower AOVs argue for a higher floor, not lower — ₹1–1.5Cr now requires seed funding), and Lenskart + Fastrack added to exclusions since sunglasses stay in scope and those two dominate every India sunglasses SERP."
+    },
+    {
+      "slug": "footwear",
+      "name": "Footwear",
+      "what_a_good_lead_is": "A young footwear D2C brand — sneakers, comfort shoes, sandals, ethnic footwear — (₹1.5–20Cr or seed-funded) absent from the 'best sneakers/most comfortable shoes India' listicles and AI answers that dominate footwear discovery.",
+      "revenue_band": "₹1.5–20Cr, or angel/seed-funded",
+      "follower_band": "5k–150k IG",
+      "sweet_spot_signals": [
+        "5k–150k IG with product-tech content (comfort, materials, made-in-India)",
+        "300–10k Amazon/Flipkart/Myntra reviews proving a revenue floor",
+        "Shark Tank India footwear pitch (Flatheads pattern)",
+        "Fresh angel/seed round in startup press",
+        "Clear niche wedge: barefoot, corporate sneakers, ethnic juttis, comfort sandals",
+        "0–5 own stores; founder visible and reachable"
+      ],
+      "too_big_signals": [
+        "Series A with a large round or any raise ≥ ₹40Cr",
+        "National chain or listed player (Bata, Metro, Campus, Relaxo pattern)",
+        "300k+ IG followers",
+        "Stated revenue above ~₹35Cr",
+        "Hiring in-house SEO/content/growth roles",
+        "Celebrity ambassador campaigns"
+      ],
+      "too_small_signals": [
+        "<3k IG and no own website",
+        "<50 total marketplace reviews",
+        "Reseller/importer of unbranded stock, no own brand"
+      ],
+      "gap_signals": [
+        "'Best sneakers under 3000' / 'most comfortable shoes India' listicles and AI answers exclude the brand",
+        "Amazon/Flipkart listings with 1k+ reviews outrank the brand's own site",
+        "No sizing, comfort-tech or care content on site despite product claims",
+        "Absent from AI answers for its exact niche (barefoot shoes, corporate sneakers, juttis)"
+      ],
+      "scoring_notes": "Footwear D2C — sneakers, comfort shoes, sandals, ethnic footwear. 5: est ₹1.5–20Cr — proxies: 5k–150k IG, 300–10k marketplace reviews, 0–5 stores — bootstrapped or seed (Monrow at ₹15Cr FY25 = ideal size); Shark Tank pitch a plus; 'best sneakers under 3000' listicles and AI answers exclude it; Amazon outranks its own site; no sizing/comfort content. 3: <₹1.5Cr but funded; or ₹20–35Cr with no in-house SEO signs. 1: big Series A or raise ≥₹40Cr (Neeman's ₹100Cr+ Series B; Comet's ₹42Cr Elevation round = too big), national chains (Bata, Metro, Campus, Relaxo), 300k+ IG, stated rev >₹35Cr, in-house SEO/content hiring — or too small: <3k IG, no site, <50 reviews.",
+      "exclusions_add": [
+        "Neeman's",
+        "Comet",
+        "Yoho",
+        "Solethreads",
+        "Campus",
+        "Relaxo",
+        "Bata",
+        "Metro Brands",
+        "Mochi",
+        "Red Chief",
+        "Liberty",
+        "Paragon"
+      ],
+      "seed_query_upgrades": [
+        "footwear D2C startup India seed funding entrackr",
+        "Shark Tank India footwear shoes deal",
+        "sneaker brand India bootstrapped emerging",
+        "comfort sandals D2C brand India small"
+      ],
+      "reasoning": "Clean size ladder: Neeman's (₹100Cr+, Series B) and Comet (₹42Cr Series A despite ₹29Cr revenue) show funding size trumps revenue — hence the ₹40Cr-raise disqualifier; Monrow (₹15.1Cr FY25) and Flatheads are the ideal archetypes. Reviewer fix applied: 3-band extended to ₹35Cr to meet the >₹35Cr disqualifier."
+    },
+    {
+      "slug": "silver-jewellery",
+      "name": "Silver Jewellery",
+      "what_a_good_lead_is": "A bootstrapped or angel/seed-funded 925-silver D2C brand whose sales run on Instagram and marketplaces while GIVA and Amazon own every silver-jewellery search result it should be winning.",
+      "revenue_band": "₹1.5–12Cr annual, or angel/seed-funded",
+      "follower_band": "5k–150k IG",
+      "sweet_spot_signals": [
+        "Own webstore (Shopify-style) with 50+ SKUs and active checkout",
+        "10k–100k IG followers with regular posting; discovery clearly IG-led",
+        "Listed on Amazon/Nykaa Fashion/Myntra with 100–5,000 reviews",
+        "Angel/seed funding press or a small Shark Tank India deal",
+        "Founder visible and reachable on LinkedIn/Instagram/press interviews",
+        "0–3 physical stores; primarily online"
+      ],
+      "too_big_signals": [
+        "Series B or any raise ≥ ₹40Cr in press (inc42/entrackr/Tracxn)",
+        "Stated revenue ≥ ₹25Cr in interviews/pitches",
+        "10+ physical stores or mall presence across cities",
+        "Celebrity cofounder or national ambassador campaigns",
+        "500k+ IG followers",
+        "Careers page or LinkedIn jobs showing SEO/content/growth hires"
+      ],
+      "too_small_signals": [
+        "<2k IG followers",
+        "No own website — sells only via IG DM or marketplaces",
+        "Reseller/aggregator of silver, not an own brand",
+        "Site or brand launched <6 months ago, near-zero reviews"
+      ],
+      "gap_signals": [
+        "Doesn't rank for its own category terms ('oxidised silver earrings', '925 silver rings for women') — GIVA and marketplaces hold the SERP",
+        "No blog or care/education content (925 vs plated, silver care) despite constant buyer questions",
+        "Brand-name search shows Amazon/Nykaa listings above the brand's own site",
+        "Absent from AI answers to 'best silver jewellery brands in India'",
+        "Thin collection pages with no descriptive copy or schema"
+      ],
+      "scoring_notes": "Score fit for a ₹5–6L/yr SEO/content/GEO retainer. 5: Indian 925-silver D2C brand, bootstrapped or angel/seed, ~₹1.5–12Cr or 5k–150k IG, own webstore (50+ SKUs), sells via Instagram + Amazon/Nykaa/Myntra (100–5k reviews), blog absent/thin, founder visible online. 4: same but weaker marketplace traction. 3: ₹12–25Cr or small Series A with no visible SEO/content hires. 2: one borderline disqualifier. 1: too big — ≥₹25Cr stated, Series B or ₹40Cr+ raised, celebrity cofounder, 10+ stores, 500k+ IG, SEO/content roles open (GIVA ₹518Cr FY25; Palmonas post-$40M Series B) — or too small: <2k IG, no own site, marketplace-only reseller, <6 months old.",
+      "exclusions_add": [
+        "GIVA",
+        "Palmonas",
+        "Shaya by CaratLane",
+        "Salty"
+      ],
+      "seed_query_upgrades": [
+        "925 silver jewellery startup India seed funding inc42 OR yourstory",
+        "silver jewellery brand Shark Tank India pitch",
+        "new oxidised silver jewellery D2C brand India founder interview",
+        "handcrafted silver jewellery brand India Nykaa Fashion launch"
+      ],
+      "reasoning": "Ceiling anchored to GIVA (₹518Cr FY25, $133M raised) and Palmonas ($40M Series B); Salty (~₹25Cr) marks the borderline. Floor from the ₹1.5Cr × 8–15% anchor. Typical 2–3-year-old silver brand sits at ₹1–8Cr with IG-led sales and no content — the exact gap."
+    },
+    {
+      "slug": "jewellery",
+      "name": "Jewellery excl. Silver",
+      "what_a_good_lead_is": "A bootstrapped or seed-funded demi-fine, lab-grown-diamond, or fashion jewellery brand — or a 1–3-showroom family jeweller going online — selling a high-consideration product with zero buying-guide or education content.",
+      "revenue_band": "₹1.5–15Cr annual, or seed-funded; jewellers ≤3 stores",
+      "follower_band": "5k–200k IG",
+      "sweet_spot_signals": [
+        "Own webstore with 50+ SKUs in demi-fine, lab-grown, or fashion jewellery",
+        "10k–150k IG followers, brand 1–4 years old",
+        "Angel/seed round in press or a small Shark Tank India deal",
+        "Regional/family jeweller with 1–3 showrooms and a recently launched e-commerce site",
+        "Amazon/Myntra/Nykaa Fashion presence with 100–5,000 reviews",
+        "Lab-grown diamond niche (education-heavy purchase) with no explainer content on site"
+      ],
+      "too_big_signals": [
+        "National chain or corporate parent (Titan/Tata, Kalyan, Malabar, listed company)",
+        "Series B+ or any raise ≥ ₹50Cr (inc42/entrackr/Tracxn)",
+        "10+ showrooms across cities",
+        "Celebrity ambassador or national TV/print campaigns",
+        "Stated revenue ≥ ₹40Cr",
+        "SEO/content/growth roles on careers page or LinkedIn jobs"
+      ],
+      "too_small_signals": [
+        "IG-only imitation-jewellery reseller with no own site",
+        "<2k IG followers and no marketplace reviews",
+        "Dropshipper/white-label with no brand identity",
+        "Launched <6 months ago"
+      ],
+      "gap_signals": [
+        "Sells lab-grown diamonds but doesn't rank for 'lab grown diamond rings India'-type high-intent queries",
+        "No buying-guide content (gold purity, 4Cs, lab-grown vs natural) despite a research-heavy purchase",
+        "Family jeweller with strong local reputation but unoptimized Google Business Profile and no city/locality landing pages",
+        "Invisible in AI answers for 'best demi-fine jewellery brands India'",
+        "Own site outranked by marketplaces even on brand-name searches"
+      ],
+      "scoring_notes": "Score fit for a ₹5–6L/yr SEO/content/GEO retainer. Category: gold/diamond, demi-fine, lab-grown, fashion jewellery (not silver-first). 5: bootstrapped/seed brand ~₹1.5–15Cr or 5k–200k IG with own store (50+ SKUs), or a family jeweller with 1–3 showrooms newly selling online — high-consideration purchase yet zero buying-guide/education content, discovery still IG or word-of-mouth. 4: same, weaker traction. 3: ₹15–40Cr or small Series A, no visible SEO/content hires (jewellery in-houses late). 1: too big — national/funded leaders (Tanishq, CaratLane, BlueStone), Series B+, 10+ showrooms, celebrity ambassador, ≥₹40Cr stated — or too small: IG-only reseller, <2k followers, no own site.",
+      "exclusions_add": [
+        "Tanishq",
+        "CaratLane",
+        "BlueStone",
+        "Melorra",
+        "Kalyan Jewellers",
+        "Malabar Gold & Diamonds",
+        "Senco Gold",
+        "Joyalukkas",
+        "Mia by Tanishq",
+        "Candere"
+      ],
+      "seed_query_upgrades": [
+        "lab grown diamond jewellery startup India seed funding",
+        "demi-fine jewellery brand India new launch founder",
+        "family jewellers launch online store India news",
+        "fashion jewellery D2C brand Shark Tank India"
+      ],
+      "reasoning": "CaratLane (₹3,583Cr FY25) and BlueStone (₹1,830Cr, IPO) show jewellery scales far larger before in-housing — too-big line at ~₹40Cr/Series B. Palmonas' one-year jump (₹97L → ₹39Cr → $40M Series B) means funding recency matters. High AOV lets jewellery afford the retainer early; family jewellers with 1–3 showrooms have local-SEO budgets at modest turnover."
+    },
+    {
+      "slug": "hair-care",
+      "name": "Personal Care — Hair Care",
+      "what_a_good_lead_is": "A bootstrapped or seed-funded D2C hair-care brand (oils, scalp care, hair-fall kits) with real marketplace traction but no ranking content, in a category where Traya proved search-led funnels print money.",
+      "revenue_band": "₹1.5–12Cr annual, or seed-funded",
+      "follower_band": "5k–150k IG",
+      "sweet_spot_signals": [
+        "Own site selling oils/serums/kits, often with a hair-quiz funnel",
+        "500+ reviews on Amazon or Nykaa across hero SKUs",
+        "10k–100k IG followers; growth clearly reels/ads-led",
+        "Angel/seed press (inc42/yourstory) or small Shark Tank India deal",
+        "Ayurvedic/clean-label positioning with founder-led storytelling in interviews",
+        "3–30 SKU range — real brand, not a single-product experiment"
+      ],
+      "too_big_signals": [
+        "Series A ≥ ₹40Cr or Series B+ funding in press",
+        "Owned by an FMCG or house-of-brands (HUL, Emami, Honasa, Innovist, Good Glamm)",
+        "Stated revenue ≥ ₹25Cr",
+        "500k+ IG followers or national TV campaigns",
+        "SEO/content/growth roles on careers page or LinkedIn jobs",
+        "Already ranks top-3 for major category queries (content team exists)"
+      ],
+      "too_small_signals": [
+        "<2k IG followers",
+        "Single SKU with <50 marketplace reviews",
+        "No own website — Amazon/Meesho only",
+        "Launched <6 months ago"
+      ],
+      "gap_signals": [
+        "No blog despite massive informational demand (hair fall, dandruff, rosemary/rice water trends) that competitors monetize via quiz funnels",
+        "Strong Amazon review base but own site invisible even for 'brand + product' queries",
+        "Absent from AI answers to 'best hair oil for hair fall India'",
+        "No ingredient or routine content while positioning as ayurvedic/science-backed",
+        "Category pages thin, no FAQ/schema on PDPs"
+      ],
+      "scoring_notes": "Score fit for a ₹5–6L/yr SEO/content/GEO retainer. 5: Indian D2C hair-care brand (oils, scalp/hair-fall kits, ayurvedic or clean-label), bootstrapped or angel/seed, ~₹1.5–12Cr or 5k–150k IG, own site + Amazon/Nykaa listings (100–5k reviews), but no ranking content despite huge informational demand that Traya-style content funnels prove monetizable. 4: same, weaker review base. 3: ₹12–25Cr or small Series A (<₹40Cr raised), no visible SEO/content hires. 1: too big — Series A ₹40Cr+/Series B, FMCG- or house-of-brands-owned, ≥₹25Cr stated, 500k+ IG, SEO/content roles open (Traya, Mamaearth, WOW class) — or too small: <2k IG, no own site, single SKU, <6 months old.",
+      "exclusions_add": [
+        "Traya",
+        "Mamaearth",
+        "WOW Skin Science",
+        "Bare Anatomy",
+        "Innovist",
+        "Pilgrim",
+        "Indulekha",
+        "Kesh King",
+        "Streax",
+        "Livon"
+      ],
+      "seed_query_upgrades": [
+        "ayurvedic hair oil brand startup India seed funding",
+        "hair care D2C brand India founder interview yourstory",
+        "scalp care startup India new brand launch",
+        "hair growth kit brand Shark Tank India"
+      ],
+      "reasoning": "Ceiling anchored to Traya (₹343Cr FY25) and Bare Anatomy/Innovist — large in-house content/SEO ops. Arata (small Series A) marks the borderline scoring 3. Floor from the ₹1.5Cr anchor; hair care's enormous informational search volume makes organic the highest-leverage slice."
+    },
+    {
+      "slug": "skin-care",
+      "name": "Personal Care — Skin Care",
+      "what_a_good_lead_is": "A bootstrapped or angel/seed skincare brand with real Nykaa/Amazon traction but no ingredient-education content, in the beauty category with the largest search demand and the fastest funding-driven graduation past agency size.",
+      "revenue_band": "₹1.5–12Cr annual, or seed-funded",
+      "follower_band": "5k–150k IG",
+      "sweet_spot_signals": [
+        "Own webstore with actives, ayurvedic, or K-beauty-inspired positioning",
+        "100–5,000 reviews on Nykaa/Amazon hero SKUs",
+        "10k–150k IG followers; discovery clearly reels/influencer-led",
+        "Angel/seed press (inc42/entrackr/yourstory) or small Shark Tank India deal",
+        "Founder visible in interviews/LinkedIn; no growth-team hiring visible",
+        "5–40 SKUs with real formulation story but thin site content"
+      ],
+      "too_big_signals": [
+        "Series B+ or any raise ≥ ₹40Cr, or strategic backing (L'Oréal BOLD, KOSÉ, Unilever Ventures)",
+        "Corporate-owned: HUL, Nykaa, Honasa, Good Glamm, Reliance",
+        "Celebrity founder or ambassador (e.g. 82°E-style brands)",
+        "Stated revenue ≥ ₹25Cr in press",
+        "500k+ IG followers",
+        "SEO/content/growth roles on careers page or LinkedIn jobs"
+      ],
+      "too_small_signals": [
+        "<2k IG followers",
+        "Single SKU with <50 reviews",
+        "White-label/marketplace-only, no own site",
+        "Launched <6 months ago"
+      ],
+      "gap_signals": [
+        "No ingredient-education content (niacinamide, retinol, SPF guides) despite actives positioning — the exact content Minimalist used to win",
+        "Strong marketplace reviews but own site doesn't rank for its product categories",
+        "Absent from AI answers to 'best vitamin C serum India' and similar",
+        "Thin PDPs: no FAQ, no schema, no routine/usage content",
+        "Brand-name SERP dominated by Nykaa/Amazon listings, not its own pages"
+      ],
+      "scoring_notes": "Score fit for a ₹5–6L/yr SEO/content/GEO retainer. Most crowded beauty category; funding pushes brands past the ceiling within a year, so check press dates. 5: bootstrapped or angel/seed skincare brand ~₹1.5–12Cr or 5k–150k IG, actives/ayurvedic positioning, own store + Nykaa/Amazon reviews (100–5k), no ingredient-education content while serums/acids/SPF demand is beauty's largest. 4: same, weaker traction. 3: ₹12–25Cr or fresh small Series A, no SEO/content hires visible. 1: too big — Series B+ or ₹40Cr+ raised, corporate-owned (HUL/Nykaa/Honasa/L'Oréal-backed), celebrity founder, ≥₹25Cr stated, 500k+ IG (Minimalist, Foxtale class) — or too small: <2k IG, no own site, single SKU.",
+      "exclusions_add": [
+        "Minimalist",
+        "Dot & Key",
+        "Foxtale",
+        "Deconstruct",
+        "Plum",
+        "mCaffeine",
+        "The Derma Co",
+        "Aqualogica",
+        "82°E",
+        "Pilgrim"
+      ],
+      "seed_query_upgrades": [
+        "skincare startup India seed funding inc42",
+        "ayurvedic skincare D2C brand India founder interview",
+        "new serum brand India launch Nykaa",
+        "skincare brand Shark Tank India pitch"
+      ],
+      "reasoning": "Ceiling: Minimalist (HUL, $342M), Foxtale ($30M Series C), Dot & Key (Nykaa-owned). Deconstruct proves velocity: seed 2022 → ₹200Cr annualized + L'Oréal BOLD money — a sweet-spot brand can graduate in ~12 months, hence the press-recency instruction. Beauty in-houses content early since it is the core growth channel."
+    },
+    {
+      "slug": "intimate-care-femtech",
+      "name": "Personal Care — Intimate Care/FemTech",
+      "what_a_good_lead_is": "A seed-stage or bootstrapped PRODUCT brand in intimate hygiene, menstrual care, sexual wellness, or women's-health supplements — where taboo topics push discovery to private search/AI and Meta ad restrictions make organic the only scalable channel.",
+      "revenue_band": "₹1.5–10Cr annual, or angel/seed-funded",
+      "follower_band": "3k–100k IG",
+      "sweet_spot_signals": [
+        "Own D2C store selling intimate washes, period care, sexual wellness, or women's supplements (10+ SKUs)",
+        "Angel/seed round in press or a Shark Tank India appearance",
+        "100–5,000 reviews on Amazon/Nykaa hero SKUs",
+        "3k–100k IG followers (category ad/content restrictions suppress social reach — a plus for the SEO pitch)",
+        "Founder (often female) active in press and LinkedIn",
+        "No education hub on site despite taboo-topic positioning"
+      ],
+      "too_big_signals": [
+        "Series B+ or $10M+ total raised (inc42/Tracxn)",
+        "Conglomerate or house-of-brands ownership (Good Glamm lineage, Mosaic Wellness)",
+        "Stated revenue ≥ ₹20Cr in interviews",
+        "National chemist-chain/modern-trade distribution announcements",
+        "Celebrity brand ambassador campaigns",
+        "Content/SEO/growth roles on careers page or LinkedIn jobs"
+      ],
+      "too_small_signals": [
+        "Single product with <10 marketplace reviews",
+        "<1k IG followers and no own website",
+        "Pure app/teleconsult femtech with no product line (wrong lead type, not just small)",
+        "Launched <6 months ago"
+      ],
+      "gap_signals": [
+        "No education content for high-volume taboo queries (intimate hygiene, period pain, vaginal health) that Nua/Sirona rank for",
+        "Restricted from Meta/Google ads (sexual wellness policy) yet no organic channel built — structurally dependent on a channel it can't use",
+        "Absent from AI answers to intimate-health questions, where privacy makes users ask AI first — the strongest GEO pitch in any category",
+        "Marketplace listings outrank the brand's own site for its own product names",
+        "No doctor/expert-reviewed content despite health claims on packaging"
+      ],
+      "scoring_notes": "Score fit for a ₹5–6L/yr SEO/content/GEO retainer. Lead = PRODUCT brand (intimate hygiene, menstrual care, sexual wellness, women's-health supplements) — NOT tracker apps, teleconsult platforms, or clinics. Organic is structural: taboo topics get searched/asked to AI privately and Meta ads are restricted. 5: bootstrapped or angel/seed brand ~₹1.5–10Cr or 3k–100k IG, own store, Amazon/Nykaa reviews 100–5k, no education hub. 4: same, weaker traction. 3: ₹10–20Cr or small Series A, no SEO/content hires. 1: too big — Series B+/$10M+ raised, conglomerate-owned, ≥₹20Cr stated (Pee Safe, Nua, Sanfe class) — or wrong/too small: app-only femtech, <1k IG, no own site, single product with <10 reviews.",
+      "exclusions_add": [
+        "Pee Safe",
+        "Sirona",
+        "Nua",
+        "Bold Care",
+        "Gynoveda",
+        "Be Bodywise",
+        "Man Matters",
+        "Sanfe"
+      ],
+      "seed_query_upgrades": [
+        "femtech startup India seed funding intimate care",
+        "menstrual care brand Shark Tank India",
+        "sexual wellness D2C startup India yourstory",
+        "women's health supplement brand India founder interview"
+      ],
+      "reasoning": "Winnable femtech = product brand, not app/platform. Ceiling: Pee Safe ($17.5M Series C), Sirona (Good Glamm), Nua — all past agency size. Reviewer fix applied: Sanfe (~₹30Cr) is just past the line, which is why the ceiling sits at ~₹20Cr — it is now in exclusions. Ad restrictions on intimate products make organic disproportionately valuable, so the band skews earlier and the follower band lower."
+    },
+    {
+      "slug": "bamboo",
+      "name": "Bamboo",
+      "what_a_good_lead_is": "A small bamboo/eco product brand (toothbrushes, cutlery, tissues, decor, corporate gifting) with its own website and real Amazon traction but near-zero Google/AI visibility for the eco queries its buyers actually search.",
+      "revenue_band": "₹1.5–10Cr, or angel/seed funded",
+      "follower_band": "3k–75k IG",
+      "sweet_spot_signals": [
+        "Own D2C site plus Amazon listings with 100–5,000 reviews",
+        "Stated revenue ₹1.5–10Cr in interviews/pitches, or an angel/seed round in startup press",
+        "Shark Tank pitch or Better India/YourStory eco feature without a large raise",
+        "Corporate/bulk gifting page on site (bamboo brands lean on B2B gifting — inbound search matters)",
+        "IG 3k–75k, active posting, but thin or dead blog despite info-heavy eco queries"
+      ],
+      "too_big_signals": [
+        "Series A or total raise ≥ ₹20Cr in funding press",
+        "Stated revenue > ₹15Cr",
+        "150k+ IG followers, celebrity investor, or wide Nykaa/modern-trade retail",
+        "Careers page hiring SEO/content/growth roles in-house"
+      ],
+      "too_small_signals": [
+        "Instagram-only or marketplace-only, no own website",
+        "IG under ~2–3k and under 50 Amazon reviews",
+        "Single-artisan/hobby operation, made-to-order only",
+        "Stated revenue under ~₹1Cr or clearly pre-revenue"
+      ],
+      "gap_signals": [
+        "Doesn't rank for category terms like 'bamboo toothbrush India' or 'eco friendly gifts' while its own Amazon listings sell well",
+        "Absent from AI answers to 'best bamboo/eco brands in India' style questions",
+        "No blog or a dead blog on the D2C site despite the category being question-driven",
+        "Strong marketplace review counts but weak branded search — marketplace-dependent revenue"
+      ],
+      "scoring_notes": "Bamboo D2C is a small niche (toothbrushes, cutlery, tissues, decor, gifting); brands in-house growth past ~₹10–15Cr. 5 = own website + Amazon presence (100–5k reviews), IG 3k–75k, revenue ₹1.5–10Cr stated or angel/seed funded, corporate-gifting page, thin/no blog despite info-heavy eco queries. 4 = most of these hold. 3 = borderline: ~₹1–1.5Cr or 2–3k IG but a real brand with its own site; also ₹10–15Cr with no in-house SEO/growth hires. 2–1 too small: Instagram/marketplace-only, <50 Amazon reviews, artisan hobby scale, pre-revenue. 1 too big: raise ≥₹20Cr or Series A, revenue >₹15Cr, 150k+ IG, or in-house SEO/growth hires on careers page (Beco archetype).",
+      "exclusions_add": [
+        "Beco",
+        "Amwoodo"
+      ],
+      "seed_query_upgrades": [
+        "bamboo products brand India D2C startup",
+        "bamboo toothbrush cutlery brand India buy online",
+        "eco friendly bamboo corporate gifting brand India",
+        "bamboo home decor brand India Shark Tank"
+      ],
+      "reasoning": "Ceiling anchored on Beco (₹108Cr FY25, ₹111Cr raised) — performance-led, never buying a retainer. Sweet spot on Bamboo India (bootstrapped, ₹2.8→4.5Cr). Reviewer fix applied: the ₹10–15Cr hole between the 5-band top and the >₹15Cr disqualifier now scores 3 when no in-house hires are visible."
+    },
+    {
+      "slug": "home-decor-furnishing",
+      "name": "Home Decor & Furnishing",
+      "what_a_good_lead_is": "A D2C decor/furnishing brand (linen, tableware, lighting, wall decor, rugs) — often a Jaipur/Panipat export-house family business gone online — with strong Instagram and marketplace sales but no organic search or AI-answer presence for its category terms.",
+      "revenue_band": "₹2–20Cr, or angel/seed funded",
+      "follower_band": "8k–200k IG",
+      "sweet_spot_signals": [
+        "Own D2C site with 150+ SKUs and real category pages",
+        "IG 8k–200k with reels traction but weak Google presence for category terms like 'bedsheets online India'",
+        "Stated revenue ₹2–20Cr, or an angel/seed round covered by inc42/YourStory",
+        "Manufacturer/export heritage pivoting D2C (Jaipur, Panipat, Moradabad, Jodhpur clusters)",
+        "Sells on Amazon/Flipkart with 500–10k reviews; 0–3 own stores"
+      ],
+      "too_big_signals": [
+        "Series A or total raise > ₹25Cr (Nestasia, Vaaree pattern)",
+        "Stated revenue > ₹30Cr or run-rate claims ≥ ₹50Cr",
+        "500k+ IG, TV/celebrity campaigns, or 10+ own stores",
+        "Careers page hiring SEO manager/content lead/growth team"
+      ],
+      "too_small_signals": [
+        "Instagram-only seller, no own domain",
+        "Under ~5k IG and under 100 marketplace reviews",
+        "Single-craft artisan or made-to-order-only hobby shop",
+        "No consistent catalog or pricing on site"
+      ],
+      "gap_signals": [
+        "Large IG audience but the brand doesn't rank for its own category keywords",
+        "No buying-guide content (thread count, material, care guides) that decor searchers use",
+        "Strong Amazon/Flipkart revenue but weak branded search — marketplace-dependent",
+        "Absent from AI answers to 'best bedsheet/dinnerware brands India' queries",
+        "Collection pages with default/thin titles and metadata"
+      ],
+      "scoring_notes": "D2C home decor/furnishing (linen, tableware, decor, lighting, rugs). This category scales further before in-housing than most niches: ceiling ~₹25–30Cr. 5 = own site with 150+ SKUs, IG 8k–200k, revenue ₹2–20Cr stated or angel/seed funded, Amazon/Flipkart presence (500–10k reviews), export/manufacturer family business gone D2C (Jaipur/Panipat clusters), big IG but no Google/AI presence for category terms. 3 = borderline: ~₹1–2Cr, 5–8k IG, or marketplace-dependent with a token own site. 2–1 too small: Instagram-only, artisan made-to-order, <100 reviews. 1 too big: raise >₹25Cr or Series A (Nestasia, Vaaree), revenue >₹30Cr, 500k+ IG, 10+ stores, in-house SEO/content hires.",
+      "exclusions_add": [
+        "Nestasia",
+        "Vaaree",
+        "Chumbak",
+        "Jaypore",
+        "Fabindia",
+        "D'Decor",
+        "Wakefit",
+        "The Sleep Company",
+        "Pepperfry",
+        "Urban Ladder",
+        "HomeLane",
+        "Livspace"
+      ],
+      "seed_query_upgrades": [
+        "home decor D2C brand India seed funding",
+        "bed linen home furnishing brand India buy online",
+        "handcrafted tableware ceramics brand India D2C",
+        "Jaipur Panipat home textile export brand D2C online"
+      ],
+      "reasoning": "Ceiling grounded on Nestasia (₹111Cr FY25, $12M+ raised) and Vaaree (₹65Cr Series A) — both in-housed. Sweet spot is the export-cluster middle tier at ₹2–20Cr: visual-first yet search-invisible. Reviewer fix applied: revenue_band aligned to ₹2–20Cr to match the signals and scoring_notes (₹1–2Cr scores 3)."
+    },
+    {
+      "slug": "cleantech-environment",
+      "name": "CleanTech & Environment",
+      "what_a_good_lead_is": "Not classic D2C — a winnable lead is a regional residential rooftop-solar installer needing local SEO/GMB amid PM Surya Ghar search demand, a small consumer eco-product brand (composting, reusables, water), or an SME-facing green service (sustainable packaging, EPR/waste) that wins by inbound content.",
+      "revenue_band": "₹1.5–15Cr est., or seed funded",
+      "follower_band": "1k–50k IG (weak signal)",
+      "sweet_spot_signals": [
+        "Rooftop solar installer in 1–5 cities with 300+ installs claimed and 50–1,000 GMB reviews",
+        "MNRE-empanelled / PM Surya Ghar registered vendor mentioned on site",
+        "Consumer eco-product brand with stated revenue ₹1.5–10Cr or a seed round from climate investors",
+        "B2B green service with case studies and founder-led sales but no blog or ranking content",
+        "Better India/YourStory eco coverage without a large raise"
+      ],
+      "too_big_signals": [
+        "Series A+ or raise ≥ ₹25Cr (SolarSquare, Recykal, Attero, Loom Solar pattern)",
+        "National footprint 15+ cities or TV/celebrity campaigns",
+        "Conglomerate or listed-company arm (Tata Power Solaroof, Waaree, Servotech, Havells)",
+        "Careers page hiring growth/SEO/content roles"
+      ],
+      "too_small_signals": [
+        "Solo installer/contractor visible only on IndiaMART/JustDial, no own website",
+        "Under ~20 GMB reviews and single-locality operation",
+        "Pre-revenue climate idea, NGO, or CSR project with no commercial buyer",
+        "Instagram-only eco page with nothing to sell"
+      ],
+      "gap_signals": [
+        "High-intent local queries ('solar panel installation [city]', 'solar subsidy [state]') owned by aggregators and national brands while the installer only surfaces for its own name",
+        "Real GMB reviews but an unclaimed or unoptimized listing",
+        "No content answering subsidy/cost/ROI questions despite the PM Surya Ghar search surge",
+        "Eco brand absent from AI answers to 'best compost bin / reusable products India' queries",
+        "Brochure site: no city pages, no cost calculator, no FAQs"
+      ],
+      "scoring_notes": "NOT classic D2C — score against these archetypes: (a) regional residential rooftop-solar installer, 1–5 cities, 300+ installs, 50–1,000 GMB reviews, riding PM Surya Ghar subsidy search demand but invisible beyond its brand name; (b) consumer eco-product brand (composting, reusables, water) at ₹1.5–10Cr or seed funded; (c) SME-facing green service (packaging, EPR/waste) with case studies but no content. 5 = one archetype fits cleanly, revenue est ₹1.5–15Cr. IG is a weak signal — weigh website, GMB and review counts instead. 1 too big: Series A+/₹25Cr+ raise, 15+ cities, or conglomerate arm (SolarSquare class). 1 too small: IndiaMART/JustDial-only contractor, <20 GMB reviews, pre-revenue NGO/idea.",
+      "exclusions_add": [
+        "SolarSquare",
+        "Tata Power Solaroof",
+        "Loom Solar",
+        "Waaree Energies",
+        "Servotech",
+        "Freyr Energy",
+        "Recykal",
+        "Attero",
+        "ReNew"
+      ],
+      "seed_query_upgrades": [
+        "residential rooftop solar installation company [city] India reviews",
+        "PM Surya Ghar registered solar vendor company website",
+        "compost bin sustainable living brand India buy online",
+        "sustainable packaging supplier startup India"
+      ],
+      "reasoning": "Too-big anchor: SolarSquare ($40M Series B, 29 cities). Winnable anchor: Daily Dump (₹3.75Cr FY22). PM Surya Ghar (₹75,021Cr outlay) creates high-intent local search that regional installers currently lose to aggregators — the clearest local-SEO/GEO fit in the portfolio. Waaree Energies excluded partly to avoid fuzzy-match collisions with decor brand Vaaree."
+    },
+    {
+      "slug": "fintech",
+      "name": "FinTech",
+      "what_a_good_lead_is": "A live, angel/seed-funded niche consumer or SME fintech (tax, credit, personal finance, insurance, NRI money) whose category is won on search and AI answers but which has no content engine yet.",
+      "revenue_band": "Seed/angel ₹2–25Cr raised (rev rarely public)",
+      "follower_band": "2k–80k IG",
+      "sweet_spot_signals": [
+        "Seed/angel round of ₹2–25Cr reported on inc42/entrackr/YourStory within ~24 months",
+        "Live product in a search-first niche: tax filing, credit score, FD/insurance comparison, NRI banking, SME billing",
+        "Founder personally doing distribution — interviews, podcasts, LinkedIn posts",
+        "Site has product pages but no learn-hub/blog engine and no SEO/content roles on careers page",
+        "Shark Tank India fintech pitch aired"
+      ],
+      "too_big_signals": [
+        "Series A ₹40Cr+ or later round in press/Tracxn; unicorn or soonicorn lists",
+        "300k+ IG or mass-media/IPL-level ad campaigns",
+        "Established content machine: deep learn hub + scaled YouTube (Groww/Zerodha Varsity class)",
+        "Careers page hiring multiple SEO/content/growth roles",
+        "Bank/NBFC at scale or listed company"
+      ],
+      "too_small_signals": [
+        "Waitlist-only landing page; app/product not live",
+        "No funding press, no affordability proxy (pricing, install scale, user counts)",
+        "One-founder side project — site is a single page"
+      ],
+      "gap_signals": [
+        "Blog absent or under ~10 thin posts while competitors run deep help/learn centres",
+        "Product is live but never surfaces in Google/AI answers for its own category query ('best tax filing app India')",
+        "Growth is visibly paid/influencer-only: active ads and IG collabs, zero ranking content or comparison pages",
+        "No calculators/glossary/how-to pages in a niche where every buyer googles before signing up"
+      ],
+      "scoring_notes": "Lead = live niche consumer/SME fintech (personal finance, tax, credit, insurance, NRI money, SME tools) that wins users via search + AI answers — not lenders-at-scale or super-apps. Revenue rarely public; funding stage is the affordability proxy. 5: angel/seed ₹2–25Cr in funding press within ~24 mo, product live, thin/no blog, no SEO/content hires visible. 3–4: funded-but-small or clearly monetizing with an affordability proxy (visible pricing, app-install scale, disclosed user counts). Unfunded/pre-seed with no affordability proxy caps at 2. 1–2: waitlist or idea-stage (too small); or Series A ₹40Cr+/Series B, 300k+ IG, household name (CRED/Groww class), or a Zerodha-Varsity-style content engine — in-housed.",
+      "exclusions_add": [
+        "Navi",
+        "slice",
+        "BharatPe",
+        "Razorpay",
+        "INDmoney",
+        "smallcase",
+        "Upstox",
+        "Angel One",
+        "MobiKwik",
+        "Jar",
+        "Stable Money",
+        "ClearTax",
+        "Groww",
+        "Zerodha",
+        "CRED",
+        "Paytm",
+        "PhonePe",
+        "PolicyBazaar"
+      ],
+      "seed_query_upgrades": [
+        "consumer fintech startup raises seed site:inc42.com",
+        "personal finance OR tax OR credit app startup India seed funding site:entrackr.com",
+        "NRI banking OR investment app startup India early stage",
+        "insurtech OR wealthtech startup India seed round yourstory"
+      ],
+      "reasoning": "Indian fintech seed rounds run ~₹4–17Cr; revenue is undisclosed pre-Series A, so funding-stage bands replace revenue bands. Reviewer fixes applied: Groww/Zerodha/CRED/Paytm/PhonePe/PolicyBazaar added to exclusions (they were named as the too-big class but missing), and unfunded/pre-seed companies now cap at 2 unless an affordability proxy is observable."
+    },
+    {
+      "slug": "ev-brands",
+      "name": "EV Brands",
+      "what_a_good_lead_is": "A selling D2C e-bike, EV-accessory, or home-charger brand with real marketplace traction that is invisible for the research queries (best/compare/how-to) its buyers actually type.",
+      "revenue_band": "₹1.5–25Cr annual, or seed-funded",
+      "follower_band": "3k–100k IG",
+      "sweet_spot_signals": [
+        "Sells own-brand e-cycle/charger/accessory on its own site plus Amazon/Flipkart with 300+ reviews",
+        "3k–100k IG with real product content; founder visible in interviews/podcasts",
+        "Seed/angel funded or states ₹2–25Cr revenue in press",
+        "Buyers google range/legality/subsidy/charging questions the brand never answers on its site"
+      ],
+      "too_big_signals": [
+        "Vehicle OEM with dealer/experience-store network across 20+ cities",
+        "Series A ₹50Cr+ or later; celebrity ambassador or TV/IPL campaigns",
+        "Stated revenue ₹35Cr+",
+        "300k+ IG",
+        "Listed parent (TVS/Bajaj/Hero) or charging network with 500+ stations"
+      ],
+      "too_small_signals": [
+        "Pre-launch: renders and 'coming soon' only",
+        "Amazon-only reseller of generic imported accessories with no brand site",
+        "Under 1k IG with no funding or press"
+      ],
+      "gap_signals": [
+        "No buying-guide or comparison content ('best electric cycle under ₹30k') despite selling exactly that product",
+        "Strong Amazon/Flipkart listing with hundreds of reviews but own site is a thin catalog with no education pages",
+        "Search/AI answers for the category name only Ola/Ather-class brands, never this one",
+        "No FAQ/charging-guide/subsidy content though EV buyers' top queries are how-to and range-anxiety questions"
+      ],
+      "scoring_notes": "Lead = D2C EV-adjacent brand — e-cycles/e-bikes, accessories, home chargers, riding gear, retrofit kits — NOT vehicle OEMs. EV buyers research heavily (best/compare/subsidy/range queries). 5: stated revenue ₹1.5–25Cr or seed/angel funded; sells on own site + Amazon/Flipkart with 300+ reviews; 3k–100k IG; little educational/comparison content. 3–4: newer but funded, or strong marketplace sales with a thin own site; also 3: ₹25–35Cr with no in-house growth hires. 1–2: pre-launch/renders-only, Amazon-only reseller, <1k IG unfunded (too small); or vehicle OEM with dealer network, Series A ₹50Cr+, ₹35Cr+ stated, 300k+ IG, celebrity campaigns (Ola Electric/Ather/EMotorad class — in-housed).",
+      "exclusions_add": [
+        "EMotorad",
+        "Revolt Motors",
+        "Okinawa Autotech",
+        "Ampere",
+        "Bounce Infinity",
+        "River",
+        "Matter Motors",
+        "Oben Electric",
+        "Kinetic Green",
+        "ChargeZone",
+        "Statiq",
+        "Ola Electric",
+        "Ather Energy",
+        "Ultraviolette",
+        "Hero Electric"
+      ],
+      "seed_query_upgrades": [
+        "electric cycle D2C brand India buy online",
+        "EV home charger brand India Amazon",
+        "e-bike startup India raises seed site:inc42.com",
+        "EV retrofit kit startup India funding"
+      ],
+      "reasoning": "EMotorad (₹180–220Cr, $32M raised) defines the in-housed ceiling. Reviewer fixes applied: sweet-spot ceiling lowered from ₹35Cr to ₹25Cr (the ₹25–35Cr window was unanchored and now scores 3 with a ₹35Cr+ disqualifier, consistent with adjacent hard-goods categories), and Ola Electric/Ather/Ultraviolette/Hero Electric added to exclusions since they were named as the too-big class but missing."
+    },
+    {
+      "slug": "health-wellness-clinics",
+      "name": "Health & Wellness Clinics",
+      "what_a_good_lead_is": "A 2–10 location single-specialty clinic group (skin, dental, physio, ayurveda, fertility) that needs local SEO, Google Business Profile dominance, and treatment content to fill new branches.",
+      "revenue_band": "2–10 branches (~₹2–25Cr)",
+      "follower_band": "1k–50k IG",
+      "sweet_spot_signals": [
+        "2–10 branches on the site's locations page/Google Maps, concentrated in one city or region",
+        "100–1,000 Google reviews per branch at 4.3+",
+        "New-branch opening announcements or hiring for a new location",
+        "Doctor-founder with a personal brand — IG/YouTube presence, quoted in press",
+        "Single specialty (skin, dental, physio, ayurveda, fertility) where local SEO compounds"
+      ],
+      "too_big_signals": [
+        "15+ branches or presence in 5+ cities",
+        "PE/VC institutional round in press — chain scaling to 25+ clinics",
+        "National franchise model advertised on site",
+        "100k+ IG, TV campaigns, or a hospital-group parent"
+      ],
+      "too_small_signals": [
+        "Single location, solo practitioner",
+        "Under 50 Google reviews total; no own website (Practo/JustDial only)",
+        "No expansion signals — same one clinic for years"
+      ],
+      "gap_signals": [
+        "Branches missing from Maps top results for '[treatment] near me' in their own locality",
+        "Unclaimed or inconsistent Google Business Profiles; review counts far below the neighbouring competitor",
+        "No per-location landing pages or treatment/condition pages on the site",
+        "Discoverable only via Practo/JustDial listings, not their own site"
+      ],
+      "scoring_notes": "Lead = multi-location single-specialty clinic group (skin, dental, physio, ayurveda, fertility) needing local SEO, GBP and treatment content. Branch count proxies size: metro clinics gross ~₹1–3Cr each; 2+ branches affords the retainer. 5: 2–10 branches listed on site/Maps, mostly one city/region, 100–1k reviews/branch, new-branch openings, visible doctor-founder, but weak rankings/thin site. 3–4: one strong clinic with clear expansion signals, or a just-opened second branch. 11–14 branches = 2 (3 only if no marketing team visible on LinkedIn). 1–2: solo practice, Practo/JustDial-only, <50 reviews (too small); or 15+ branches, 5+ cities, PE/VC-backed chain, 100k+ IG (Kaya/Clove/Dr Batra's class).",
+      "exclusions_add": [
+        "Clove Dental",
+        "Dezy",
+        "Oliva Clinics",
+        "Dr Agarwal's Eye Hospital",
+        "Vasan Eye Care",
+        "Indira IVF",
+        "Nova IVF",
+        "NephroPlus",
+        "Amaha",
+        "Motherhood Hospitals",
+        "Practo",
+        "Kaya Clinic",
+        "Dr Batra's",
+        "VLCC",
+        "Berkowits",
+        "Richfeel"
+      ],
+      "seed_query_upgrades": [
+        "dermatology clinic branches Mumbai OR Bangalore OR Delhi book appointment",
+        "dental clinic chain India opens new branch",
+        "physiotherapy clinic chain branches India",
+        "fertility clinic new chain India site:yourstory.com"
+      ],
+      "reasoning": "Too-big calibrated on Kaya (94 clinics), Dr Batra's (~150), Clove (500th clinic), Dezy (25, VC-funded). Metro clinics gross ~₹1–3Cr each, so a second branch clears the affordability floor. Reviewer fixes applied: Kaya/Dr Batra's/VLCC/Berkowits/Richfeel added to exclusions (they calibrate the ceiling but were missing), and the 11–14-branch hole now scores 2, or 3 only when no marketing team is visible."
+    }
+  ]
+}

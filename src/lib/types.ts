@@ -53,6 +53,14 @@ export interface IcpConfig {
   seed_queries?: string[];
   exclusions?: string[];
   notes?: string;
+  /**
+   * Category-specific scoring guidance, injected verbatim into the qualify
+   * and score prompts: what a good lead looks like HERE, the observable
+   * too-big/too-small signals, and what a discovery gap means in this
+   * category. This is the per-industry half of the fit rubric — the generic
+   * half lives in prompts/score.ts.
+   */
+  fit_criteria?: string;
 }
 
 export interface Industry {

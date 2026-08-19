@@ -9,6 +9,7 @@ import type { Candidate, StageIO } from "../contracts";
 import {
   canonicalJson,
   exclusionBlock,
+  icpBlock,
   joinSections,
   section,
 } from "./render";
@@ -58,6 +59,7 @@ export function buildQualifyPrompt(
   const { batch, plan } = input;
 
   const context = joinSections([
+    icpBlock(plan),
     section("Exclusions — a candidate matching any of these is disqualified", exclusionBlock(plan)),
     section(
       `Batch — ${batch.length} candidate${batch.length === 1 ? "" : "s"} from the discovery stage`,

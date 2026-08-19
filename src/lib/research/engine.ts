@@ -262,7 +262,7 @@ export async function advanceRun(runId: string): Promise<AdvanceResult> {
           opts
         );
         const raw = await callStage(provider, call, seedPlanSchema, ledger, scratch, remainingMs);
-        const plan = toSeedPlan(raw, exclusions, getTargetLeads());
+        const plan = toSeedPlan(raw, exclusions, getTargetLeads(), icp);
 
         state = { ...state, seed: { plan } };
         outcome.nextStage = "discover";

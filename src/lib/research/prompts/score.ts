@@ -8,6 +8,7 @@ import {
   clamp,
   exclusionBlock,
   fieldLines,
+  icpBlock,
   joinSections,
   section,
 } from "./render";
@@ -70,6 +71,7 @@ export function buildScorePrompt(
   const { profiles, plan } = input;
 
   const context = joinSections([
+    icpBlock(plan),
     section(
       "Run context",
       fieldLines({
