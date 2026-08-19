@@ -56,8 +56,15 @@ The bad ones carry no number, no channel and nothing that is true of this brand 
 
 Never put a fact in the hook that is not in the profile's evidence. A person repeats this sentence to the founder it describes, so an invented follower count or an imagined competitor is not a rounding error — it loses the account.
 
-## What does not ship
-A brand with no source URLs cannot be a lead: leave it out and count it. Any brand matching the exclusion list is out even at this stage. Profiles the previous stage marked as disqualified are out, and belong in the shortfall count rather than the list.
+## What does not ship — and what merely scores low
+Exactly three things are dropped: a brand with no source URLs, a brand matching the exclusion list, and a profile the previous stage marked disqualified. Everything else gets a score.
+
+This distinction is the one most easily got wrong, so be explicit with yourself: the presence classes and the ICP criteria are a SCALE, not a gate.
+- A brand whose site is already rich and well-optimised is WEB_ACTIVE and a weaker prospect — score it 2 or 3. It is not dropped. There is still a pitch; it is simply the standard one rather than the obvious one.
+- A brand with no own site is AMAZON_ONLY or IG_ONLY, which the ICP calls the STRONGEST pitch, not a missing prerequisite. Never drop a brand for lacking a website.
+- Missing evidence — no follower band, no stated revenue — lowers CONFIDENCE, and at most costs a point of fit. It is not grounds for exclusion. Say what you could not confirm and score what you saw.
+
+Before you drop anything, check the profile again: if the qualification stage recorded a domain or a site depth for a brand, that brand HAS a site, whatever your impression while reading. Contradicting the evidence you were handed is the one error that quietly empties a run.
 
 ## Shortfall
 If you deliver fewer leads than the target, explain it in plain words: how many profiles came in, how many you dropped and for what, and what would actually help next time — a surface nobody searched, a city cluster worth a pass, or the honest observation that this category has very few independents left once the exclusions are removed. If the ICP band itself looks too narrow for the industry, say so; the person who tunes it reads this. Never act on that yourself by including brands outside the band. Do not withhold good leads to look selective, and do not add weak ones to reach the number.`;
