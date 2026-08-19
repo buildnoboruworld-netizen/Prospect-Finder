@@ -37,8 +37,27 @@ export function getTargetLeads(): number {
     : DEFAULT_TARGET_LEADS;
 }
 
-/** Max web searches per run — the other half of cost control alongside the $ cap. */
+/**
+ * Max web searches per RUN — cost control, alongside the $ cap.
+ *
+ * Keep this generous. Qualify is what turns a name into a lead (domain,
+ * follower band, site depth), and it searches per candidate: starve the run
+ * budget and qualify returns all-nulls, which the scorer then correctly
+ * refuses to draft. A run capped at 6 produced 5 candidates and 0 leads for
+ * exactly this reason.
+ */
 export function getMaxSearchesPerRun(): number {
   const raw = Number(process.env.RESEARCH_MAX_SEARCHES);
   return Number.isFinite(raw) && raw > 0 ? Math.floor(raw) : 40;
+}
+
+/**
+ * Max web searches in a SINGLE stage call — deadline control, a different
+ * concern from the run budget above. Searches run inside the stage's ~44s
+ * slice alongside two model calls, so too many in one call times the stage
+ * out. Conflating this with the run budget is what starved qualify.
+ */
+export function getMaxSearchesPerCall(): number {
+  const raw = Number(process.env.RESEARCH_MAX_SEARCHES_PER_CALL);
+  return Number.isFinite(raw) && raw > 0 ? Math.floor(raw) : 8;
 }

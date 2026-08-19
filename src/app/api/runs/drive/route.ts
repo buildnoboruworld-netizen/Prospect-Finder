@@ -18,11 +18,11 @@ import type { RunStage } from "@/lib/types";
 // run to completion: each stage is already sized to fill the function's time
 // budget, and one slow run must not starve the others.
 //
-// SCHEDULING: vercel.json runs this hourly, which is a safety net (it rescues
-// runs abandoned by a closed tab), NOT a driver. Vercel's Hobby plan caps
-// crons at once per day, so minute-level sweeping needs either a Pro plan or
-// any external scheduler pointed at this URL with the CRON_SECRET bearer
-// token — the endpoint does not care who calls it:
+// SCHEDULING: vercel.json runs this DAILY, which is all Vercel Hobby permits
+// — a more frequent schedule makes Vercel REJECT THE WHOLE DEPLOYMENT, which
+// is exactly what silently stopped three commits from shipping. So this is a
+// once-a-day rescue for runs abandoned by a closed tab, NOT a driver. Real
+// hands-off runs need Vercel Pro, or any external scheduler hitting this URL
 //
 //   curl -H "Authorization: Bearer $CRON_SECRET" \
 //     https://<your-app>/api/runs/drive

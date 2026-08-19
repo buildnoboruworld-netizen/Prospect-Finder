@@ -26,6 +26,7 @@ import { buildRetrievedUrlSet, normalizeCitations, urlKey } from "./citations";
 import {
   STAGE_DEADLINE_MS,
   getCostCapUsd,
+  getMaxSearchesPerCall,
   getMaxSearchesPerRun,
   getProviderId,
   getTargetLeads,
@@ -272,9 +273,13 @@ export async function advanceRun(runId: string): Promise<AdvanceResult> {
 
       case "discover": {
         const plan = required(state.seed?.plan, "its search plan");
+        // 40% of the run to discovery, the rest reserved for qualify — which
+        // is where a name becomes a lead. Also clamped per call so one stage
+        // cannot spend its whole slice searching and time out.
         const maxSearches = Math.min(
           searchesLeft,
-          Math.ceil(getMaxSearchesPerRun() * 0.4)
+          Math.ceil(getMaxSearchesPerRun() * 0.4),
+          getMaxSearchesPerCall()
         );
 
         const call = buildDiscoverCall(
@@ -328,7 +333,14 @@ export async function advanceRun(runId: string): Promise<AdvanceResult> {
         );
         const maxSearches =
           searchesLeft > 0
-            ? Math.max(1, Math.min(Math.floor(searchesLeft / batchesLeft), batch.length * 3))
+            ? Math.max(
+                1,
+                Math.min(
+                  Math.floor(searchesLeft / batchesLeft),
+                  batch.length * 3,
+                  getMaxSearchesPerCall()
+                )
+              )
             : 0;
 
         const call = buildQualifyCall(
